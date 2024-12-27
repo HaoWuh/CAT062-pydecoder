@@ -1,6 +1,6 @@
 import json
 from tqdm import tqdm
-from decode import byte_decoder
+from decoder.decode import byte_decoder
 
 if __name__ == '__main__':
 
