@@ -1,7 +1,7 @@
 # CAT062-pydecoder
 
 ## Introduction
-CAT062-pydecoder is a Python-based tool designed to decode the existing aviation communication format known as CAT062. It efficiently extracts information from CAT062 data streams and converts the decoded data into JSON format, making it easier to process and analyze.
+CAT062-pydecoder is a Python-based tool designed to decode the existing aviation communication format known as CAT062 (currently solely version1.18 supported). It efficiently extracts information from CAT062 data streams and converts the decoded data into JSON format, making it easier to process and analyze.
 
 ## Features
 - Decodes CAT062 data streams efficiently.
