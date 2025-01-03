@@ -3,8 +3,8 @@ import os
 import inspect
 from datetime import datetime
 
-from cat062_maps import *
-from decode_func import *
+from decoder.cat062_maps import *
+from decoder.decode_func import *
 
 class byte_decoder:
 
