@@ -102,6 +102,7 @@ class byte_decoder:
                         pass
 
             self.result.append(block_result)
+            block_number+= 1
                     
         # 返回解析结果
         return self.result
