@@ -19,33 +19,28 @@ class byte_decoder:
             # test_data
             # self.byte_data = [62, 0, 52, 187, 125, 37, 4, 2, 3, 0, 14, 88, 79, 0, 56, 6, 229, 1, 70, 6, 65, 253, 38, 1, 183, 13, 74, 0, 13, 51, 179, 195, 126, 32, 128, 120, 12, 203, 0, 6, 1, 0, 5, 80, 0, 0, 40, 0, 42, 0, 62, 4]
             self.byte_data= []
-        self.result= []
+        self.result= dict()
         self.index_position= 0
         self.save_name= save_name
 
 
     def process_byte_data(self):
-        # 1. 判断第1个字节是否为 062
+        # 判断第1个字节是否为 062
         if self.byte_data[0] != 62:
             raise ValueError("第一个字节不是 062，报错！")
         cat_version= f"0x{self.byte_data[0]:02X}"
         self.index_position+= 1
-
-        # 2. 读取第2个字节为报文起始位置
-        start_position = self.byte_data[1]
-        self.index_position+= 1
         
-        # 3. 读取第3个字节为报文长度
-        message_length = int(self.byte_data[2])
-        self.index_position+= 1
+        # 读取第2,3个字节为报文长度
+        message_length = (self.byte_data[1] << 8)+int(self.byte_data[2])
+        self.index_position+= 2
 
         head_message_dict = {
             "cat version:": int(cat_version, 16),
-            "start_position": start_position,
             "message_length": message_length,
             # "fspec_field": fspec_field
         }
-        self.result.append(head_message_dict)
+        self.result["head message"]= head_message_dict
         
         block_number= 1
         while self.index_position < message_length:
@@ -57,9 +52,6 @@ class byte_decoder:
             
             # 结果以字典形式返回
             block_result = dict()
-
-
-            self.index_position+= start_position
 
             self.final_fspec_field=dict()
             for fspec in fspec_field:
@@ -101,7 +93,7 @@ class byte_decoder:
                         print(key, " not found")
                         pass
 
-            self.result.append(block_result)
+            self.result["block_"+str(block_number)]= block_result
             block_number+= 1
                     
         # 返回解析结果
