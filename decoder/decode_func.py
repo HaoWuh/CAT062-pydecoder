@@ -30,7 +30,7 @@ class decode_functions:
         if binary_str[0] == '1':  # 如果符号位为 1，表示负数
             # 对二进制字符串进行取反
             inverted_binary = ''.join('1' if b == '0' else '0' for b in binary_str)
-            return inverted_binary
+            return "-"+inverted_binary
         else:
             return binary_str  # 如果是正数，不做任何处理
     
@@ -72,7 +72,6 @@ class decode_functions:
         return out
     
 
-    # TODO Coding test
     @staticmethod
     def I062_380_ID(b_data):
         out= dict()
@@ -680,10 +679,10 @@ class decode_functions:
         binary_str= "".join([format(b, '08b') for b in b_data])
         
         sac_str= binary_str[0:8]
-        out["SAC"]= hex(int(sac_str))
+        out["SAC"]= str(int(sac_str,2))
 
         sic_str= binary_str[8:16]
-        out["SIC"]= hex(int(sic_str))
+        out["SIC"]= str(int(sic_str,2))
 
         return out
     
@@ -1210,10 +1209,10 @@ class decode_functions:
         binary_str= "".join([format(b, '08b') for b in b_data])
 
         sac_str= binary_str[0:8]
-        out["SAC"]= hex(int(sac_str))
+        out["SAC"]= str(int(sac_str,2))
 
         sic_str= binary_str[8:16]
-        out["SIC"]= hex(int(sic_str))
+        out["SIC"]= str(int(sic_str,2))
         return out
     
 
