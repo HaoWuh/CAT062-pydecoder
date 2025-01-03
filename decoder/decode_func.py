@@ -1293,7 +1293,10 @@ class decode_functions:
         tst_list= ["Real target report", "Test target report"]
         out["TST"]= tst_list[int(binary_str[5])]
 
-        assert binary_str[6:8] == "00", "Reserved bits must be 0"
+        if binary_str[6:] == "00":
+            pass
+        else:
+            print("warning detect unexpected non-zero bit(s)")
 
         return out
 

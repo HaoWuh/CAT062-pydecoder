@@ -1,187 +1,319 @@
-{
-    "cat version:": 62,
-    "start_position": 0,
-    "message_length": 183,
-    "I062_010:|0x19 0x64 |": {
-        "SAC": "25",
-        "SIC": "100"
+[
+    {
+        "cat version:": 62,
+        "start_position": 0,
+        "message_length": 183
     },
-    "I062_015:|0x04 |": {
-        "Service Identification": 4
-    },
-    "I062_070:|0x3C 0x5F 0xEA |": {
-        "Time Stemp": "30911 s"
-    },
-    "I062_105:|0x00 0x81 0x23 0xDC 0x00 0x2B 0x0B 0xA6 |": {
-        "WGS-84 Latitude": "45.40080785751343 deg",
-        "WGS-84 Longitude": "15.13318419456482 deg"
-    },
-    "I062_100:|0xFD 0xC9 0x17 0xFE 0xE5 0xEB |": {
-        "X": "-72564.0 m",
-        "Y": "-36106.0 m"
-    },
-    "I062_185:|0x02 0x36 0xFD 0x55 |": {
-        "Vx": "141.5 m/s",
-        "Vy": "-170.5 m/s"
-    },
-    "I062_210:|0x00 0x00 |": {
-        "Ax": "0.0 m/s^2",
-        "Ay": "0.0 m/s^2"
-    },
-    "I062_060:|0x05 0x5D |": {
-        "V": "validated",
-        "G": "Default",
-        "Change in Mode 3/A": "Mode 3/A has Changed",
-        "octal Mode 3/A": "2535"
-    },
-    "I062_380:|0xC1 0x20 0x3C 0x0A 0x55 0x4D 0x81 0x34 0xDF 0x2C 0xE0 0x20 0xF6 |": {
-        "(ADR)": {
-            "Target address": "0x3c0a55"
-        },
-        "(ID)": {
-            "Target identity": "SXD4723 "
-        },
-        "(COM)": {
-            "COM": "Comm. A and Comm. B capability",
-            "STAT": "No alert, no SPI, aircraft airborne",
-            "SSC": "Yes",
-            "ARC": "25 ft resolution",
-            "AIC": "Yes",
-            "B1A": "1",
-            "B1B": "0110"
-        }
-    },
-    "I062_040:|0x1F 0x29 |": {
-        "Track number": "7977"
-    },
-    "I062_080:|0x0D 0x13 0x01 0x08 |": {
-        "(MON)": "Multisensor track",
-        "(SPI)": "default value",
-        "Most Reliable Height (MRH)": "Barometric altitude (Mode C) more reliable",
-        "Source of calculated track altitude for I062/130 (SRC)": "triangulation",
-        "(CNF)": "Confirmed track",
-        "(SIM)": "Actual track",
-        "(TSE)": "default value",
-        "(TSB)": "default value",
-        "(FPC)": "Flight plan correlated",
-        "(AFF)": "default value",
-        "(STP)": "default value",
-        "(KOS)": "Background service used",
-        "(AMA)": "track not resulting from amalgamation process",
-        "(MD4)": "No Mode 4 interrogation",
-        "(ME)": "default value",
-        "(MI)": "default value",
-        "(MD5)": "No Mode 5 interrogation",
-        "(CST)": "Default value",
-        "(PSR)": "Default value",
-        "(SSR)": "Default value",
-        "(MDS)": "Default value",
-        "(ADS)": "Age of the last received ADS-B track update is higher than system dependent threshold",
-        "(SUC)": "Default value",
-        "(AAC)": "Default value"
-    },
-    "I062_290:|0x70 0x04 0x00 0x00 |": {
-        "(PSR)": {
-            "PSR": "1.0 s"
-        },
-        "(SSR)": {
-            "SSR": "0.0 s"
-        },
-        "(MDS)": {
-            "MDS": "0.0 s"
-        }
-    },
-    "I062_200:|0x00 |": {
-        "Transversal Acceleration (TRANS)": "Constant Course",
-        "Longitudinal Acceleration (LONG)": "Constant Groundspeed",
-        "Vertical Rate (VERT)": "Level",
-        "Altitude Discrepancy Flag (ADF)": "No altitude discrepancy"
-    },
-    "I062_295:|0x90 0x00 0x00 |": {
-        "(MFL)": {
-            "MFL": "0.0 s"
-        },
-        "(MDA)": {
-            "MDA": "0.0 s"
-        }
-    },
-    "I062_136:|0x05 0x78 |": {
-        "Flight level": "350.0 FL"
-    },
-    "I062_130:|0x16 0x12 |": {
-        "vertical distance": "35312.5 ft"
-    },
-    "I062_135:|0x05 0x78 |": {
-        "QNH": "No QNH correction applied",
-        "Barometric altitude": "350.0 FL"
-    },
-    "I062_220:|0x00 0x00 |": {
-        "Rate of climb/descent": "0.0 feet/minute"
-    },
-    "I062_390:|0xFF 0xE1 0x00 0x19 0x64 0x53 0x58 0x44 0x34 0x37 0x32 0x33 0x41 0xBE 0x12 0x2D 0x44 0x42 0x37 0x33 0x38 0x4D 0x45 0x44 0x44 0x4C 0x48 0x45 0x4C 0x58 0x20 0x00 0x20 0x05 0x78 |": {
-        "(TAG)": {
+    {
+        "I062_010:|0x19 0x64 |": {
             "SAC": "25",
             "SIC": "100"
         },
-        "(CSN)": {
-            "Callsign": "SXD4723"
+        "I062_015:|0x04 |": {
+            "Service Identification": 4
         },
-        "(IFI)": {
-            "TYP": "Unit 1 internal flight number",
-            "NBR": "29233709"
+        "I062_070:|0x3C 0x5F 0xD5 |": {
+            "Time Stemp": "30911 s"
         },
-        "(FCT)": {
-            "GAT/OAT": "General Air Traffic",
-            "FR1/FR2": "Instrument Flight Rules",
-            "RVSM": "Approved",
-            "HPR": "Normal Priority Flight"
+        "I062_105:|0x00 0x7F 0x3E 0x9B 0x00 0x25 0x18 0x8D |": {
+            "WGS-84 Latitude": "44.73441302776337 deg",
+            "WGS-84 Longitude": "13.0415278673172 deg"
         },
-        "(TAC)": {
-            "Type of aircraft": "B738"
+        "I062_100:|0xF8 0xB4 0x2A 0xFC 0xC2 0xFC |": {
+            "X": "-239082.5 m",
+            "Y": "-106113.5 m"
         },
-        "(WTC)": {
-            "Wake turbulence category": "M"
+        "I062_185:|0xFF 0x33 0x02 0xA8 |": {
+            "Vx": "-51.0 m/s",
+            "Vy": "170.0 m/s"
         },
-        "(DEP)": {
-            "Departure airport": "EDDL"
+        "I062_210:|0x00 0x00 |": {
+            "Ax": "0.0 m/s^2",
+            "Ay": "0.0 m/s^2"
         },
-        "(DST)": {
-            "Destination airport": "HELX"
+        "I062_060:|0x08 0xBE |": {
+            "V": "validated",
+            "G": "Default",
+            "Change in Mode 3/A": "Mode 3/A has Changed",
+            "octal Mode 3/A": "4276"
         },
-        "(RDS)": {
-            "NU1": " ",
-            "NU2": "\u0000",
-            "LTR": " "
+        "I062_040:|0x13 0x74 |": {
+            "Track number": "4980"
         },
-        "(CFL)": {
-            "CFL": "350.0 FL"
+        "I062_080:|0x11 0x03 0x01 0x18 |": {
+            "(MON)": "Multisensor track",
+            "(SPI)": "default value",
+            "Most Reliable Height (MRH)": "Barometric altitude (Mode C) more reliable",
+            "Source of calculated track altitude for I062/130 (SRC)": "height from coverage",
+            "(CNF)": "Confirmed track",
+            "(SIM)": "Actual track",
+            "(TSE)": "default value",
+            "(TSB)": "default value",
+            "(FPC)": "Not flight-plan correlated",
+            "(AFF)": "default value",
+            "(STP)": "default value",
+            "(KOS)": "Background service used",
+            "(AMA)": "track not resulting from amalgamation process",
+            "(MD4)": "No Mode 4 interrogation",
+            "(ME)": "default value",
+            "(MI)": "default value",
+            "(MD5)": "No Mode 5 interrogation",
+            "(CST)": "Default value",
+            "(PSR)": "Default value",
+            "(SSR)": "Default value",
+            "(MDS)": "Age of the last received Mode S track update is higher than system dependent threshold",
+            "(ADS)": "Age of the last received ADS-B track update is higher than system dependent threshold",
+            "(SUC)": "Default value",
+            "(AAC)": "Default value"
+        },
+        "I062_290:|0x70 0x1D 0x00 0xFF |": {
+            "(PSR)": {
+                "PSR": "7.25 s"
+            },
+            "(SSR)": {
+                "SSR": "0.0 s"
+            },
+            "(MDS)": {
+                "MDS": "0.0 s"
+            }
+        },
+        "I062_200:|0x28 |": {
+            "Transversal Acceleration (TRANS)": "Constant Course",
+            "Longitudinal Acceleration (LONG)": "Increasing Groundspeed",
+            "Vertical Rate (VERT)": "Climb",
+            "Altitude Discrepancy Flag (ADF)": "No altitude discrepancy"
+        },
+        "I062_295:|0x90 0x00 0x00 |": {
+            "(MFL)": {
+                "MFL": "0.0 s"
+            },
+            "(MDA)": {
+                "MDA": "0.0 s"
+            }
+        },
+        "I062_136:|0x02 0x74 |": {
+            "Flight level": "157.0 FL"
+        },
+        "I062_130:|0x1B 0x10 |": {
+            "vertical distance": "43300.0 ft"
+        },
+        "I062_135:|0x02 0x74 |": {
+            "QNH": "No QNH correction applied",
+            "Barometric altitude": "157.0 FL"
+        },
+        "I062_220:|0xFF 0xB9 |": {
+            "Rate of climb/descent": "-437.5 feet/minute"
+        },
+        "I062_340:|0xDC 0x19 0x0D 0xBA 0xB0 0xB8 0x80 0x02 0x74 0x08 0xBE 0x40 |": {
+            "(SID)": {
+                "SAC": "25",
+                "SIC": "13"
+            },
+            "(POS)": {
+                "RHO": "-69.30859375 NM",
+                "THETA": "-100.5413818359375 deg"
+            },
+            "(MDC)": {
+                "V": "Code validated",
+                "G": "Default",
+                "Last Measured Mode C Code": "0.0 FL"
+            },
+            "(MDA)": {
+                "V": "Code validated",
+                "G": "Default",
+                "L": "MODE 3/A code as derived from the reply of the transponder",
+                "Mode-3/A reply": "0o4276"
+            },
+            "(TYP)": {
+                "TYP": "Single SSR detection",
+                "SIM": "Actual target report",
+                "RAB": "Report from target transponder",
+                "TST": "Real target report"
+            }
         }
     },
-    "I062_340:|0xDC 0x19 0x0D 0x5D 0x32 0xC1 0x0B 0x05 0x78 0x05 0x5D 0xA0 |": {
-        "(SID)": {
+    {
+        "I062_010:|0x19 0x64 |": {
             "SAC": "25",
-            "SIC": "13"
+            "SIC": "100"
         },
-        "(POS)": {
-            "RHO": "93.1953125 NM",
-            "THETA": "-88.52783203125 deg"
+        "I062_015:|0x04 |": {
+            "Service Identification": 4
         },
-        "(MDC)": {
-            "V": "Code validated",
+        "I062_070:|0x3C 0x5F 0xEA |": {
+            "Time Stemp": "30911 s"
+        },
+        "I062_105:|0x00 0x81 0x23 0xDC 0x00 0x2B 0x0B 0xA6 |": {
+            "WGS-84 Latitude": "45.40080785751343 deg",
+            "WGS-84 Longitude": "15.13318419456482 deg"
+        },
+        "I062_100:|0xFD 0xC9 0x17 0xFE 0xE5 0xEB |": {
+            "X": "-72564.0 m",
+            "Y": "-36106.0 m"
+        },
+        "I062_185:|0x02 0x36 0xFD 0x55 |": {
+            "Vx": "141.5 m/s",
+            "Vy": "-170.5 m/s"
+        },
+        "I062_210:|0x00 0x00 |": {
+            "Ax": "0.0 m/s^2",
+            "Ay": "0.0 m/s^2"
+        },
+        "I062_060:|0x05 0x5D |": {
+            "V": "validated",
             "G": "Default",
-            "Last Measured Mode C Code": "0.0 FL"
+            "Change in Mode 3/A": "Mode 3/A has Changed",
+            "octal Mode 3/A": "2535"
         },
-        "(MDA)": {
-            "V": "Code validated",
-            "G": "Default",
-            "L": "MODE 3/A code as derived from the reply of the transponder",
-            "Mode-3/A reply": "0o2535"
+        "I062_380:|0xC1 0x20 0x3C 0x0A 0x55 0x4D 0x81 0x34 0xDF 0x2C 0xE0 0x20 0xF6 |": {
+            "(ADR)": {
+                "Target address": "0x3c0a55"
+            },
+            "(ID)": {
+                "Target identity": "SXD4723 "
+            },
+            "(COM)": {
+                "COM": "Comm. A and Comm. B capability",
+                "STAT": "No alert, no SPI, aircraft airborne",
+                "SSC": "Yes",
+                "ARC": "25 ft resolution",
+                "AIC": "Yes",
+                "B1A": "1",
+                "B1B": "0110"
+            }
         },
-        "(TYP)": {
-            "TYP": "Single ModeS Roll-Call",
-            "SIM": "Actual target report",
-            "RAB": "Report from target transponder",
-            "TST": "Real target report"
+        "I062_040:|0x1F 0x29 |": {
+            "Track number": "7977"
+        },
+        "I062_080:|0x0D 0x13 0x01 0x08 |": {
+            "(MON)": "Multisensor track",
+            "(SPI)": "default value",
+            "Most Reliable Height (MRH)": "Barometric altitude (Mode C) more reliable",
+            "Source of calculated track altitude for I062/130 (SRC)": "triangulation",
+            "(CNF)": "Confirmed track",
+            "(SIM)": "Actual track",
+            "(TSE)": "default value",
+            "(TSB)": "default value",
+            "(FPC)": "Flight plan correlated",
+            "(AFF)": "default value",
+            "(STP)": "default value",
+            "(KOS)": "Background service used",
+            "(AMA)": "track not resulting from amalgamation process",
+            "(MD4)": "No Mode 4 interrogation",
+            "(ME)": "default value",
+            "(MI)": "default value",
+            "(MD5)": "No Mode 5 interrogation",
+            "(CST)": "Default value",
+            "(PSR)": "Default value",
+            "(SSR)": "Default value",
+            "(MDS)": "Default value",
+            "(ADS)": "Age of the last received ADS-B track update is higher than system dependent threshold",
+            "(SUC)": "Default value",
+            "(AAC)": "Default value"
+        },
+        "I062_290:|0x70 0x04 0x00 0x00 |": {
+            "(PSR)": {
+                "PSR": "1.0 s"
+            },
+            "(SSR)": {
+                "SSR": "0.0 s"
+            },
+            "(MDS)": {
+                "MDS": "0.0 s"
+            }
+        },
+        "I062_200:|0x00 |": {
+            "Transversal Acceleration (TRANS)": "Constant Course",
+            "Longitudinal Acceleration (LONG)": "Constant Groundspeed",
+            "Vertical Rate (VERT)": "Level",
+            "Altitude Discrepancy Flag (ADF)": "No altitude discrepancy"
+        },
+        "I062_295:|0x90 0x00 0x00 |": {
+            "(MFL)": {
+                "MFL": "0.0 s"
+            },
+            "(MDA)": {
+                "MDA": "0.0 s"
+            }
+        },
+        "I062_136:|0x05 0x78 |": {
+            "Flight level": "350.0 FL"
+        },
+        "I062_130:|0x16 0x12 |": {
+            "vertical distance": "35312.5 ft"
+        },
+        "I062_135:|0x05 0x78 |": {
+            "QNH": "No QNH correction applied",
+            "Barometric altitude": "350.0 FL"
+        },
+        "I062_220:|0x00 0x00 |": {
+            "Rate of climb/descent": "0.0 feet/minute"
+        },
+        "I062_390:|0xFF 0xE1 0x00 0x19 0x64 0x53 0x58 0x44 0x34 0x37 0x32 0x33 0x41 0xBE 0x12 0x2D 0x44 0x42 0x37 0x33 0x38 0x4D 0x45 0x44 0x44 0x4C 0x48 0x45 0x4C 0x58 0x20 0x00 0x20 0x05 0x78 |": {
+            "(TAG)": {
+                "SAC": "25",
+                "SIC": "100"
+            },
+            "(CSN)": {
+                "Callsign": "SXD4723"
+            },
+            "(IFI)": {
+                "TYP": "Unit 1 internal flight number",
+                "NBR": "29233709"
+            },
+            "(FCT)": {
+                "GAT/OAT": "General Air Traffic",
+                "FR1/FR2": "Instrument Flight Rules",
+                "RVSM": "Approved",
+                "HPR": "Normal Priority Flight"
+            },
+            "(TAC)": {
+                "Type of aircraft": "B738"
+            },
+            "(WTC)": {
+                "Wake turbulence category": "M"
+            },
+            "(DEP)": {
+                "Departure airport": "EDDL"
+            },
+            "(DST)": {
+                "Destination airport": "HELX"
+            },
+            "(RDS)": {
+                "NU1": " ",
+                "NU2": "\u0000",
+                "LTR": " "
+            },
+            "(CFL)": {
+                "CFL": "350.0 FL"
+            }
+        },
+        "I062_340:|0xDC 0x19 0x0D 0x5D 0x32 0xC1 0x0B 0x05 0x78 0x05 0x5D 0x0A |": {
+            "(SID)": {
+                "SAC": "25",
+                "SIC": "13"
+            },
+            "(POS)": {
+                "RHO": "93.1953125 NM",
+                "THETA": "-88.52783203125 deg"
+            },
+            "(MDC)": {
+                "V": "Code validated",
+                "G": "Default",
+                "Last Measured Mode C Code": "0.0 FL"
+            },
+            "(MDA)": {
+                "V": "Code validated",
+                "G": "Default",
+                "L": "MODE 3/A code as derived from the reply of the transponder",
+                "Mode-3/A reply": "0o2535"
+            },
+            "(TYP)": {
+                "TYP": "No detection",
+                "SIM": "Actual target report",
+                "RAB": "Report from field monitor (fixed transponder)",
+                "TST": "Real target report"
+            }
         }
     }
-}
+]

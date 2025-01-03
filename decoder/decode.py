@@ -18,16 +18,8 @@ class byte_decoder:
         else:
             # test_data
             # self.byte_data = [62, 0, 52, 187, 125, 37, 4, 2, 3, 0, 14, 88, 79, 0, 56, 6, 229, 1, 70, 6, 65, 253, 38, 1, 183, 13, 74, 0, 13, 51, 179, 195, 126, 32, 128, 120, 12, 203, 0, 6, 1, 0, 5, 80, 0, 0, 40, 0, 42, 0, 62, 4]
-            self.byte_data= [0x3E ,0x00 ,0xB7,0xBF,0xDF,0xFF,0x02,0x19,0x64,0x04,0x3C,0x5F,0xEA,0x00,0x81,0x23,0xDC,0x00,0x2B,
-                                    0x0B,0xA6,0xFD,0xC9,0x17,0xFE,0xE5,0xEB,0x02,0x36,0xFD,0x55,0x00,0x00,0x05,0x5D,
-                                    0xC1,0x20,0x3C,0x0A,0x55,0x4D,0x81,0x34,0xDF,0x2C,0xE0,0x20,0xF6,0x1F,0x29,0x0D,
-                                    0x13,0x01,0x08,0x70,0x04,0x00,0x00,0x00,0x90,0x00,0x00,0x05,0x78,0x16,0x12,0x05,
-                                    0x78,0x00,0x00,0xFF,0xE1,0x00,0x19,0x64,0x53,0x58,0x44,0x34,0x37,0x32,0x33,0x41,
-                                    0xBE,0x12,0x2D,0x44,0x42,0x37,0x33,0x38,0x4D,0x45,0x44,0x44,0x4C,0x48,0x45,0x4C,
-                                    0x58,0x20,0x00,0x20,0x05,0x78,0xDC,0x19,0x0D,0x5D,0x32,0xC1,0x0B,0x05,0x78,0x05,
-                                    0x5D,0xA0
-]
-        self.result= None
+            self.byte_data= []
+        self.result= []
         self.index_position= 0
         self.save_name= save_name
 
@@ -46,56 +38,71 @@ class byte_decoder:
         # 3. 读取第3个字节为报文长度
         message_length = int(self.byte_data[2])
         self.index_position+= 1
-        
-        # 4. 读取之后字节作为 FSPEC 字段
-        fspec_field= []
-        fspec_field, self.index_position= self.fspec_decode(self.index_position)        
-        
-        # 结果以字典形式返回
-        self.result = {
+
+        head_message_dict = {
             "cat version:": int(cat_version, 16),
             "start_position": start_position,
             "message_length": message_length,
             # "fspec_field": fspec_field
         }
-
-
-        self.index_position+= start_position
-
-        self.final_fspec_field=dict()
-        for fspec in fspec_field:
-            self.final_fspec_field[fspec[0]]= fspec[1]
-
-        for fspec in fspec_field:
-            index_plus= 0
-            assert self.index_position < len(self.byte_data), "Conflict: index_position >= len(byte_data)!"
-            if isinstance(fspec[1], int) or isinstance(fspec[1], float):
-                self.result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1]))
-            elif isinstance(fspec[1], str):
-                self.result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1][0]))
-            else:
-                pass
-            # try:
-            #     if isinstance(fspec[1], int) or isinstance(fspec[1], float):
-            #         self.result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1]))
-            #     elif isinstance(fspec[1], str):
-            #         self.result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1][0]))
-            #     else:
-            #         pass
-            # except:
-            #     print("Meet errors or skip some Info! ", fspec)
-
-            self.final_fspec_field[fspec[0]]= [f"0x{byte:02X} " for byte in self.byte_data[self.index_position: self.index_position+index_plus]]
-            self.index_position+= index_plus
+        self.result.append(head_message_dict)
         
-        if self.final_fspec_field:
-            for key in self.final_fspec_field.keys():
-                try:
-                    self.result[key+":|"+ "".join(self.final_fspec_field[key])+"|"]= self.result.pop(key)
-                except:
-                    print(key, " not found")
+        block_number= 1
+        while self.index_position < message_length:
+            print("block: ",block_number," byte position(from 0): ", self.index_position)
+        
+            # 读取之后字节作为 FSPEC 字段
+            fspec_field= []
+            fspec_field, self.index_position= self.fspec_decode(self.index_position)        
+            
+            # 结果以字典形式返回
+            block_result = dict()
+
+
+            self.index_position+= start_position
+
+            self.final_fspec_field=dict()
+            for fspec in fspec_field:
+                self.final_fspec_field[fspec[0]]= fspec[1]
+
+            for fspec in fspec_field:
+                index_plus= 0
+                assert self.index_position < len(self.byte_data), "Conflict: index_position >= len(byte_data)!"
+                if isinstance(fspec[1], int) or isinstance(fspec[1], float):
+                    block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1]))
+                elif isinstance(fspec[1], str):
+                    block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1][0]))
+                else:
                     pass
-        
+                # try:
+                #     if isinstance(fspec[1], int) or isinstance(fspec[1], float):
+                #         block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1]))
+                #     elif isinstance(fspec[1], str):
+                #         block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1][0]))
+                #     else:
+                #         pass
+                # except:
+                #     if isinstance(fspec[1], int) or isinstance(fspec[1], float):
+                #         block_result[fspec[0]], index_plus= None, fspec[1]
+                #     elif isinstance(fspec[1], str):
+                #         block_result[fspec[0]], index_plus= None, int(fspec[1][0])
+                #     else:
+                #         pass
+                #     print("Meet errors or skip some Info! ", fspec)
+
+                self.final_fspec_field[fspec[0]]= [f"0x{byte:02X} " for byte in self.byte_data[self.index_position: self.index_position+index_plus]]
+                self.index_position+= index_plus
+            
+            if self.final_fspec_field:
+                for key in self.final_fspec_field.keys():
+                    try:
+                        block_result[key+":|"+ "".join(self.final_fspec_field[key])+"|"]= block_result.pop(key)
+                    except:
+                        print(key, " not found")
+                        pass
+
+            self.result.append(block_result)
+                    
         # 返回解析结果
         return self.result
     
@@ -1057,6 +1064,6 @@ class byte_decoder:
 
 # 测试数据
 # TEST!
-BD= byte_decoder()
-print(BD.process_byte_data())
-BD.save2json()
+# BD= byte_decoder()
+# print(BD.process_byte_data())
+# BD.save2json()
