@@ -18,20 +18,20 @@ class byte_decoder:
         else:
             # test_data
             # self.byte_data = [62, 0, 52, 187, 125, 37, 4, 2, 3, 0, 14, 88, 79, 0, 56, 6, 229, 1, 70, 6, 65, 253, 38, 1, 183, 13, 74, 0, 13, 51, 179, 195, 126, 32, 128, 120, 12, 203, 0, 6, 1, 0, 5, 80, 0, 0, 40, 0, 42, 0, 62, 4]
-            self.byte_data= []
+            self.byte_data= [0]
         self.result= dict()
         self.index_position= 0
         self.save_name= save_name
 
 
     def process_byte_data(self):
-        # 判断第1个字节是否为 062
+        # Detect if the head byte is 62
         if self.byte_data[0] != 62:
-            raise ValueError("第一个字节不是 062，报错！")
+            raise ValueError("Error! detect non-62 head byte!")
         cat_version= f"0x{self.byte_data[0]:02X}"
         self.index_position+= 1
         
-        # 读取第2,3个字节为报文长度
+        # Read message length from 2nd and 3rd byte
         message_length = (self.byte_data[1] << 8)+int(self.byte_data[2])
         self.index_position+= 2
 
@@ -46,11 +46,11 @@ class byte_decoder:
         while self.index_position < message_length:
             print("block: ",block_number," byte position(from 0): ", self.index_position)
         
-            # 读取之后字节作为 FSPEC 字段
+            # Read FSPEC field
             fspec_field= []
             fspec_field, self.index_position= self.fspec_decode(self.index_position)        
             
-            # 结果以字典形式返回
+            # Block result dictionary
             block_result = dict()
 
             self.final_fspec_field=dict()
@@ -96,7 +96,7 @@ class byte_decoder:
             self.result["block_"+str(block_number)]= block_result
             block_number+= 1
                     
-        # 返回解析结果
+        # Return result
         return self.result
     
     def fspec_decode(self, position= 3):
@@ -184,20 +184,7 @@ class byte_decoder:
         # 总秒数
         value0 = rhs // 128
         
-        # 小时数
-        value1 = value0 // 3600
-        
-        # 分钟数
-        value2 = (value0 - value1 * 3600) // 60
-        
-        # 秒数
-        value3 = (value0 - value1 * 3600) % 60
-        
-        # 毫秒数
-        value4 = ((rhs % 128) * 1000) // 128
-        
-        # 获取当前日期
-        current_date = datetime.now().strftime("%m/%d/%Y")  # 格式化当前日期
+        # current_date = datetime.now().strftime("%m/%d/%Y")  
         # out['Time Stamp']= f"{current_date} {value1}:{value2}:{value3}.{value4}"
         out['Time Stemp']= str(value0)+" "+"s"
    
@@ -1036,9 +1023,7 @@ class byte_decoder:
 
 
     def save2json(self, output_path= rf"outputs"):
-        # 调用函数处理并输出 JSON 文件
         try:
-            # 将解析结果输出到 JSON 文件
             with open(output_path+"/"+"cat062"+self.save_name+".json", "w", encoding="utf-8") as json_file:
                 json.dump(self.result, json_file, ensure_ascii=False, indent=4)
         except ValueError as e:
@@ -1046,16 +1031,13 @@ class byte_decoder:
 
     @staticmethod
     def save2json_static(result, output_path= rf"outputs", save_name= ""):
-        # 调用函数处理并输出 JSON 文件
         try:
-            # 将解析结果输出到 JSON 文件
             with open(output_path+"/"+"cat062"+save_name+".json", "w", encoding="utf-8") as json_file:
                 json.dump(result, json_file, ensure_ascii=False, indent=4)
         except ValueError as e:
             print(e)
 
 
-# 测试数据
 # TEST!
 # BD= byte_decoder()
 # print(BD.process_byte_data())

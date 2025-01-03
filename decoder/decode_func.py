@@ -6,7 +6,6 @@ def apply_func(func_name, *args):
 
     functions= decode_functions()
 
-    # 使用 getattr 调用方法
     try:
         method = getattr(functions, func_name)
     except:
@@ -26,24 +25,23 @@ class decode_functions:
 
     @staticmethod
     def invert_binary_if_negative(binary_str):
-        # 判断符号位（最高位）
-        if binary_str[0] == '1':  # 如果符号位为 1，表示负数
-            # 对二进制字符串进行取反
+        if binary_str[0] == '1':  
             inverted_binary = ''.join('1' if b == '0' else '0' for b in binary_str)
             return "-"+inverted_binary
         else:
-            return binary_str  # 如果是正数，不做任何处理
+            return binary_str  
     
 
 
     @staticmethod
     def binary_to_decimal(binary_str):
-        # 判断符号位
-        if binary_str[0] == '1':  # 负数处理
-            # 取反加一
-            inverted_binary = ''.join('1' if b == '0' else '0' for b in binary_str)  # 取反
-            decimal_value = -(int(inverted_binary, 2) + 1)  # 加1并取负
-        else:  # 正数处理
+        if binary_str[0] == '1':  
+
+            inverted_binary = ''.join('1' if b == '0' else '0' for b in binary_str)  
+            decimal_value = -(int(inverted_binary, 2) + 1)  
+
+        else:  
+            
             decimal_value = int(binary_str, 2)
 
         return decimal_value
