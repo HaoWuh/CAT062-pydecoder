@@ -178,10 +178,8 @@ class byte_decoder:
         """
 
         out= dict()
-        # 将几个独立字节合并为一个字节
         rhs = (self.byte_data[index_start] << 16) + (self.byte_data[index_start+1] << 8) + self.byte_data[index_start+2]
         
-        # 总秒数
         value0 = rhs // 128
         
         # current_date = datetime.now().strftime("%m/%d/%Y")  
@@ -294,11 +292,9 @@ class byte_decoder:
         second_byte= bin(self.byte_data[index_start+1])[2:].zfill(8)
         combined_byte= (first_byte[4:] + second_byte).zfill(16)
 
-        # 将二进制字符串转换为十进制整数
         decimal_value = int(str(combined_byte), 2)
 
-        # 将十进制整数转换为八进制字符串
-        octal_value = oct(decimal_value)[2:]  # 去掉 '0o' 前缀
+        octal_value = oct(decimal_value)[2:] 
         out["octal Mode 3/A"]= octal_value
         return out, index_end-index_start
     
@@ -318,13 +314,13 @@ class byte_decoder:
             _type_: dictionary, int
         """
         out=dict()
-        # 把第一位去掉
+
         binary_str = "".join(format(byte, '08b') for byte in self.byte_data[index_start+1:index_end])
 
         flno2_binary_str = ""
         result = ""
 
-        # 遍历二进制字符串并按每6位处理
+
         for i, char in enumerate(binary_str):
             flno2_binary_str += char
             if (i + 1) % 6 == 0:
