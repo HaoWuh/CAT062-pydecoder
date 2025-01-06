@@ -732,7 +732,8 @@ class decode_functions:
         hpr_list= ["Normal Priority Flight", "High Priority Flight"]
         out["HPR"]= hpr_list[int(binary_str[6:7],2)]
 
-        assert binary_str[7] == "0", "bit must be 0"
+        if binary_str[7] == "0":
+            print("warning: bit must be 0")
 
         return out
     

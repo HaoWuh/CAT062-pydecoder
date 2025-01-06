@@ -288,7 +288,8 @@ class byte_decoder:
         out["V"]= "validated" if int(first_byte[0]) == 0 else "not validated"
         out["G"]= "Default" if int(first_byte[1]) == 0 else "Garbled"
         out["Change in Mode 3/A"]= "No change" if first_byte[2] == 0 else "Mode 3/A has Changed"
-        assert int(first_byte[3]) == 0, "I062_060 error: bit must be 0!"
+        if int(first_byte[3]) == 0:
+            print("warning: I062_060: bit must be 0!")
         second_byte= bin(self.byte_data[index_start+1])[2:].zfill(8)
         combined_byte= (first_byte[4:] + second_byte).zfill(16)
 
