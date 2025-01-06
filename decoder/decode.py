@@ -1034,7 +1034,8 @@ class byte_decoder:
             print(e)
 
 
-# TEST!
-# BD= byte_decoder()
-# print(BD.process_byte_data())
-# BD.save2json()
+if __name__ == "__main__":
+    #TEST
+    BD= byte_decoder()
+    BD.process_byte_data()
+    BD.save2json()
