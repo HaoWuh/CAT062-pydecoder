@@ -207,57 +207,79 @@ class decode_functions:
     def I062_380_TID(b_data):
         out= dict()
         binary_str= "".join([format(b, '08b') for b in b_data])
-        out["REP"]= hex(int(binary_str[:8],2))
+        out["REP"]= str(int(binary_str[:8],2))
+        
+        count_rep= 0
+        out["rep_content"]= []
+        pos= 8
+        
+        while count_rep < int(out["REP"]):
+            rep_dict= dict()
+            
+            rep_dict["TCA"]= binary_str[pos]
+            pos+= 1
+            rep_dict["NC"]= binary_str[pos]
+            pos+= 1
+            rop_dict["TCP"]= hex(int(binary_str[pos:pos+6],2))
+            pos+= 6
 
-        out["TCA"]= binary_str[8]
-        out["NC"]= binary_str[9]
-        out["TCP"]= hex(int(binary_str[10:16],2))
+            alttitude_str= decode_functions.invert_binary_if_negative(binary_str[pos:pos+16])
+            rep_dict["Altitude"]= str(int(alttitude_str,2)*10)+" "+"ft"
+            pos+= 16
 
-        alttitude_str= decode_functions.invert_binary_if_negative(binary_str[16:32])
-        out["Altitude"]= str(int(alttitude_str,2)*10)+" "+"ft"
+            latitude_str= decode_functions.invert_binary_if_negative(binary_str[pos:pos+24])
+            rep_dict["Latitude"]= str(int(latitude_str,2)*(180.0/2**23))+" "+"deg"
+            pos+= 24
 
-        latitude_str= decode_functions.invert_binary_if_negative(binary_str[32:56])
-        out["Latitude"]= str(int(latitude_str,2)*(180.0/2**23))+" "+"deg"
+            longitude_str= decode_functions.invert_binary_if_negative(binary_str[pos:pos+36])
+            rep_dict["Longitude"]= str(int(longitude_str,2)*(180.0/2**23))+" "+"deg"
+            pos+= 36
 
-        longitude_str= decode_functions.invert_binary_if_negative(binary_str[56:80])
-        out["Longitude"]= str(int(longitude_str,2)*(180.0/2**23))+" "+"deg"
+            point_list=[
+                        "Unknown",
+                        "Fly by waypoint (LT)",
+                        "Fly over waypoint (LT)",
+                        "Hold pattern (LT)",
+                        "Procedure hold (LT)",
+                        "Procedure turn (LT)",
+                        "RF leg (LT)",
+                        "Top of climb (VT)",
+                        "Top of descent (VT)",
+                        "Start of level (VT)",
+                        "Cross-over altitude (VT)",
+                        "Transition altitude (VT)"
+                    ]
+            rep_dict["Point type"]= point_list[int(binary_str[pos:pos+4],2)]
+            rep_dict["Point type"]= decode_functions.des2val_des(rep_dict["Point type"], point_list)
+            pos+=4
 
-        point_list=[
-                    "Unknown",
-                    "Fly by waypoint (LT)",
-                    "Fly over waypoint (LT)",
-                    "Hold pattern (LT)",
-                    "Procedure hold (LT)",
-                    "Procedure turn (LT)",
-                    "RF leg (LT)",
-                    "Top of climb (VT)",
-                    "Top of descent (VT)",
-                    "Start of level (VT)",
-                    "Cross-over altitude (VT)",
-                    "Transition altitude (VT)"
-                ]
-        out["Point type"]= point_list[int(binary_str[80:84],2)]
-        out["Point type"]= decode_functions.des2val_des(out["Point type"], point_list)
+            td_list= [
+                        "N/A",
+                        "Turn right",
+                        "Turn left",
+                        "No turn"
+                    ]
+            rep_dict["TD"]= td_list[int(binary_str[pos:pos+2],2)]
+            rep_dict["TD"]= decode_functions.des2val_des(rep_dict["TD"], td_list)
+            pos+= 2
 
-        td_list= [
-                    "N/A",
-                    "Turn right",
-                    "Turn left",
-                    "No turn"
-                ]
-        out["TD"]= td_list[int(binary_str[84:86],2)]
-        out["TD"]= decode_functions.des2val_des(out["TD"], td_list)
+            rep_dict["TRA"]= "TTR not available" if int(binary_str[pos]) == 0 else "TTR available"
+            rep_dict["TRA"]= decode_functions.des2val_des(rep_dict["TRA"], ["TTR not available","TTR available"])
+            pos+= 1
+            rep_dict["TOA"]= "TOV available" if int(binary_str[pos]) == 0 else "TOV not available"
+            rep_dict["TOA"]= decode_functions.des2val_des(rep_dict["TOA"], ["TOV available","TOV not available"])
+            pos+= 1
 
-        out["TRA"]= "TTR not available" if int(binary_str[86]) == 0 else "TTR available"
-        out["TRA"]= decode_functions.des2val_des(out["TRA"], ["TTR not available","TTR available"])
-        out["TOA"]= "TOV available" if int(binary_str[87]) == 0 else "TOV not available"
-        out["TOA"]= decode_functions.des2val_des(out["TOA"], ["TOV available","TOV not available"])
+            tov_str= decode_functions.invert_binary_if_negative(binary_str[pos:pos+24])
+            rep_dict["TOV"]= str(int(tov_str,2)*1)+" "+"second"
+            pos+= 24
 
-        tov_str= decode_functions.invert_binary_if_negative(binary_str[88:112])
-        out["TOV"]= str(int(tov_str,2)*1)+" "+"second"
-
-        ttr_str= decode_functions.invert_binary_if_negative(binary_str[112:128])
-        out["TTR"]= str(int(ttr_str,2)*0.01)+" "+"Nm"
+            ttr_str= decode_functions.invert_binary_if_negative(binary_str[pos:pos+16])
+            rep_dict["TTR"]= str(int(ttr_str,2)*0.01)+" "+"Nm"
+            pos+= 16
+            
+            out["rep_content"].append(rep_dict)
+            count_rep+= 1
 
 
         return out
@@ -549,12 +571,25 @@ class decode_functions:
         binary_str= "".join([format(b, '08b') for b in b_data])
 
         rep_str= binary_str[0:8]
-        out["REP"]= hex(int(rep_str,2))
+        out["REP"]= str(int(rep_str,2))
+        
+        count_rep= 0
+        out["rep_content"]= []
+        pos= 8
+        
+        while count_rep < int(out["REP"]):
+            rep_dict= dict()
 
-        out["MSB"]= binary_str[8:64]
+            rep_dict["MSB"]= binary_str[pos:pos+56]
+            pos+= 56
 
-        out["BDS1"]= hex(int(binary_str[64:68],2))
-        out["BDS2"]= hex(int(binary_str[68:72],2))
+            rep_dict["BDS1"]= hex(int(binary_str[pos:pos+4],2))
+            pos+= 4
+            rep_dict["BDS2"]= hex(int(binary_str[pos:pos+4],2))
+            pos+= 4
+            
+            out["rep_content"].append(rep_dict)
+            count_rep+= 1
 
         return out
     

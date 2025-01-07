@@ -52,7 +52,7 @@ I062_380_mapping = {
     "(FSS)": 2,  # bit-26
     "(FX) 1": None,  # bit-25
     "(TIS)": 1,  # bit-24
-    "(TID)": 16,  # bit-23
+    "(TID)": "16rep15",  # bit-23
     "(COM)": 2,  # bit-22
     "(SAB)": 2,  # bit-21
     "(ACS)": 7,  # bit-20
@@ -70,7 +70,7 @@ I062_380_mapping = {
     "(POS)": 6,  # bit-8
     "(GAL)": 2,  # bit-7
     "(PUN)": 1,  # bit-6
-    "(MB)": 9,  # bit-5
+    "(MB)": "9rep8",  # bit-5
     "(IAR)": 2,  # bit-4
     "(MAC)": 2,  # bit-3
     "(BPS)": 2,  # bit-2

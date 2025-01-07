@@ -368,10 +368,20 @@ class byte_decoder:
 
         function_name = inspect.currentframe().f_code.co_name
 
+
         for ik, key in enumerate(out.keys()):
             if out[key] == "Presence":
-                out[key]= apply_func(function_name+"_"+key[1:-1], self.byte_data[index_end:index_end+I062_380_mapping[key]])
-                index_end+= I062_380_mapping[key]
+                if isinstance(I062_380_mapping[key], int):
+                    out[key]= apply_func(function_name+"_"+key[1:-1], self.byte_data[index_end:index_end+I062_380_mapping[key]])
+                    index_end+= I062_380_mapping[key]
+                elif isinstance(I062_380_mapping[key], str) and 'rep' in I062_380_mapping[key]:
+                    rep_pos= I062_380_mapping[key].find('rep')
+                    b_num= int(I062_380_mapping[key][:rep_pos])+ (int(self.byte_data[index_end])-1)*int(I062_380_mapping[key][rep_pos+3:])
+                    
+                    out[key]= apply_func(function_name+"_"+key[1:-1], self.byte_data[index_end:index_end+b_num])
+                    index_end+= b_num
+                else:
+                    print("error! not str or no 'rep' inside!")
             else:
                 pass
 
