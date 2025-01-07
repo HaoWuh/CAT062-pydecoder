@@ -87,6 +87,11 @@ class byte_decoder:
 
                 self.final_fspec_field[fspec[0]]= [f"0x{byte:02X} " for byte in self.byte_data[self.index_position: self.index_position+index_plus]]
                 self.index_position+= index_plus
+                
+                ###
+                print(self.final_fspec_field[fspec[0]])
+                print(block_result[fspec[0]])
+                ###
             
             if self.final_fspec_field:
                 for key in self.final_fspec_field.keys():
@@ -674,6 +679,9 @@ class byte_decoder:
 
         for ik, key in enumerate(out.keys()):
             if out[key] == "Presence":
+                ###
+                print(key, " ", [hex(x) for x in self.byte_data[index_end:index_end+I062_390_mapping[key]]])
+                ###
                 out[key]= apply_func(function_name+"_"+key[1:-1], self.byte_data[index_end:index_end+I062_390_mapping[key]])
                 index_end+= I062_390_mapping[key]
             else:

@@ -90,8 +90,9 @@ class Raw_Reader(Reader):
                     print(item)
             print('Textual description of data')
             print('----------------------')
-        formatted = asterix.describe(parsed)
-        return formatted
+        return parsed
+        # formatted = asterix.describe(parsed)
+        # return formatted
         
     @staticmethod
     def preprocess(data):
