@@ -1,273 +1,232 @@
 [
     {
         "I062_010": {
-            "SAC": 25.0,
-            "SIC": 25.0
+            "SAC": {
+                "val": 1
+            },
+            "SIC": {
+                "val": 1
+            }
+        },
+        "I062_070": {
+            "Time Stemp": {
+                "val": 28046.0
+            }
+        },
+        "I062_105": {
+            "WGS-84 Latitude": {
+                "val": 31.137866377830505
+            },
+            "WGS-84 Longitude": {
+                "val": 121.79720163345337
+            }
+        },
+        "I062_100": {
+            "X": {
+                "val": 441.0
+            },
+            "Y": {
+                "val": -699.5
+            }
+        },
+        "I062_185": {
+            "Vx": {
+                "val": 3.25
+            },
+            "Vy": {
+                "val": -9.25
+            }
+        },
+        "I062_060": {
+            "V": {
+                "val": 0
+            },
+            "G": {
+                "val": 0
+            },
+            "Change in Mode 3/A": {
+                "val": 1
+            },
+            "octal Mode 3/A": {
+                "val": 6101
+            }
+        },
+        "I062_245": {
+            "Target Identification": "CSH854  "
+        },
+        "I062_380": {
+            "ADR": {
+                "Target address": "0x782125"
+            }
+        },
+        "I062_040": {
+            "Track number": {
+                "val": 628
+            }
+        },
+        "I062_080": {
+            "MON": {
+                "val": 0
+            },
+            "SPI": {
+                "val": 0
+            },
+            "MRH": {
+                "val": 0
+            },
+            "SRC": {
+                "val": 0
+            },
+            "CNF": {
+                "val": 0
+            },
+            "SIM": {
+                "val": 0
+            },
+            "TSE": {
+                "val": 0
+            },
+            "TSB": {
+                "val": 0
+            },
+            "FPC": {
+                "val": 1
+            },
+            "AFF": {
+                "val": 0
+            },
+            "STP": {
+                "val": 0
+            },
+            "KOS": {
+                "val": 0
+            },
+            "AMA": {
+                "val": 1
+            },
+            "MD4": {
+                "val": 0
+            },
+            "ME": {
+                "val": 0
+            },
+            "MI": {
+                "val": 0
+            },
+            "MD5": {
+                "val": 0
+            }
+        },
+        "I062_135": {
+            "QNH": {
+                "val": 1
+            },
+            "Barometric altitude": {
+                "val": 0.0
+            }
         },
         "I062_390": {
             "TAG": {
-                "SAC": 25.0,
-                "SIC": 25.0
+                "SAC": {
+                    "val": 1
+                },
+                "SIC": {
+                    "val": 1
+                }
             },
             "CSN": {
-                "Callsign": "CCA1517"
+                "Callsign": "CSH854 "
             },
             "IFI": {
                 "TYP": {
-                    "val": 0,
-                    "meaning": "Plan Number"
+                    "val": 0
                 },
-                "NBR": 8334.0
+                "NBR": {
+                    "val": 274
+                }
+            },
+            "FCT": {
+                "GAT/OAT": {
+                    "val": 2
+                },
+                "FR1/FR2": {
+                    "val": 0
+                },
+                "RVSM": {
+                    "val": 3
+                },
+                "HPR": {
+                    "val": 0
+                }
             },
             "TAC": {
-                "Type of aircraft": "A321"
+                "Type of aircraft": "B38M"
             },
             "WTC": {
                 "Wake turbulence category": "M"
             },
             "DEP": {
-                "Departure airport": "ZBAA"
+                "Departure airport": "VTBS"
             },
             "DST": {
-                "Destination airport": "ZSSS"
+                "Destination airport": "ZSPD"
             },
             "RDS": {
-                "NU1": 3.0,
-                "NU2": 6.0,
-                "LTR": "R"
-            },
-            "TOD": {
-                "REP": 2.0,
-                "rep_content": [
-                    {
-                        "TYP": {
-                            "val": 8,
-                            "meaning": "Estimated time of arrival"
-                        },
-                        "DAY": {
-                            "val": 0,
-                            "meaning": "Today"
-                        },
-                        "HOR": 7.0,
-                        "MIN": 24.0,
-                        "AVS": 0.0,
-                        "SEC": 0.0
-                    },
-                    {
-                        "TYP": {
-                            "val": 10,
-                            "meaning": "Actual landing time"
-                        },
-                        "DAY": {
-                            "val": 0,
-                            "meaning": "Today"
-                        },
-                        "HOR": 7.0,
-                        "MIN": 22.0,
-                        "AVS": 0.0,
-                        "SEC": 0.0
-                    }
-                ]
-            },
-            "AST": {
-                "Aircraft stand": 227.0
-            }
-        }
-    },
-    {
-        "I062_010": {
-            "SAC": 25.0,
-            "SIC": 25.0
-        },
-        "I062_390": {
-            "TAG": {
-                "SAC": 25.0,
-                "SIC": 25.0
-            },
-            "CSN": {
-                "Callsign": "CSN6981"
-            },
-            "IFI": {
-                "TYP": {
-                    "val": 0,
-                    "meaning": "Plan Number"
+                "NU1": {
+                    "val": 3
                 },
-                "NBR": 7442.0
-            },
-            "TAC": {
-                "Type of aircraft": "B738"
-            },
-            "WTC": {
-                "Wake turbulence category": "M"
-            },
-            "DEP": {
-                "Departure airport": "ZWWW"
-            },
-            "DST": {
-                "Destination airport": "ZSSS"
-            },
-            "RDS": {
-                "NU1": 3.0,
-                "NU2": 6.0,
-                "LTR": "R"
-            },
-            "TOD": {
-                "REP": 1.0,
-                "rep_content": [
-                    {
-                        "TYP": {
-                            "val": 8,
-                            "meaning": "Estimated time of arrival"
-                        },
-                        "DAY": {
-                            "val": 0,
-                            "meaning": "Today"
-                        },
-                        "HOR": 7.0,
-                        "MIN": 53.0,
-                        "AVS": 0.0,
-                        "SEC": 0.0
-                    }
-                ]
-            },
-            "AST": {
-                "Aircraft stand": 266.0
-            }
-        }
-    },
-    {
-        "I062_010": {
-            "SAC": 25.0,
-            "SIC": 25.0
-        },
-        "I062_390": {
-            "TAG": {
-                "SAC": 25.0,
-                "SIC": 25.0
-            },
-            "CSN": {
-                "Callsign": "CES2159"
-            },
-            "IFI": {
-                "TYP": {
-                    "val": 0,
-                    "meaning": "Plan Number"
+                "NU2": {
+                    "val": 5
                 },
-                "NBR": 8572.0
-            },
-            "TAC": {
-                "Type of aircraft": "A20N"
-            },
-            "WTC": {
-                "Wake turbulence category": "M"
-            },
-            "DEP": {
-                "Departure airport": "ZLXY"
-            },
-            "DST": {
-                "Destination airport": "ZSSS"
-            },
-            "RDS": {
-                "NU1": 3.0,
-                "NU2": 6.0,
-                "LTR": "R"
+                "LTR": "L"
             },
             "TOD": {
-                "REP": 2.0,
-                "rep_content": [
-                    {
-                        "TYP": {
-                            "val": 8,
-                            "meaning": "Estimated time of arrival"
-                        },
-                        "DAY": {
-                            "val": 0,
-                            "meaning": "Today"
-                        },
-                        "HOR": 7.0,
-                        "MIN": 45.0,
-                        "AVS": 0.0,
-                        "SEC": 0.0
-                    },
-                    {
-                        "TYP": {
-                            "val": 10,
-                            "meaning": "Actual landing time"
-                        },
-                        "DAY": {
-                            "val": 0,
-                            "meaning": "Today"
-                        },
-                        "HOR": 7.0,
-                        "MIN": 43.0,
-                        "AVS": 0.0,
-                        "SEC": 0.0
-                    }
-                ]
-            },
-            "AST": {
-                "Aircraft stand": 412.0
-            }
-        }
-    },
-    {
-        "I062_010": {
-            "SAC": 25.0,
-            "SIC": 25.0
-        },
-        "I062_390": {
-            "TAG": {
-                "SAC": 25.0,
-                "SIC": 25.0
-            },
-            "CSN": {
-                "Callsign": "CES5114"
-            },
-            "IFI": {
-                "TYP": {
-                    "val": 0,
-                    "meaning": "Plan Number"
+                "REP": {
+                    "val": 1
                 },
-                "NBR": 5181.0
-            },
-            "TAC": {
-                "Type of aircraft": "A332"
-            },
-            "WTC": {
-                "Wake turbulence category": "H"
-            },
-            "DEP": {
-                "Departure airport": "ZBAA"
-            },
-            "DST": {
-                "Destination airport": "ZSSS"
-            },
-            "RDS": {
-                "NU1": 3.0,
-                "NU2": 6.0,
-                "LTR": "R"
-            },
-            "TOD": {
-                "REP": 1.0,
                 "rep_content": [
                     {
                         "TYP": {
-                            "val": 8,
-                            "meaning": "Estimated time of arrival"
+                            "val": 8
                         },
                         "DAY": {
-                            "val": 0,
-                            "meaning": "Today"
+                            "val": 0
                         },
-                        "HOR": 7.0,
-                        "MIN": 50.0,
-                        "AVS": 0.0,
-                        "SEC": 0.0
+                        "HOR": {
+                            "val": 7
+                        },
+                        "MIN": {
+                            "val": 37
+                        },
+                        "AVS": {
+                            "val": 0
+                        },
+                        "SEC": {
+                            "val": 0
+                        }
                     }
                 ]
             },
             "AST": {
-                "Aircraft stand": 230.0
+                "Aircraft stand": {
+                    "val": 118
+                }
+            }
+        },
+        "I062_340": {
+            "TYP": {
+                "TYP": {
+                    "val": 2
+                },
+                "SIM": {
+                    "val": 0
+                },
+                "RAB": {
+                    "val": 0
+                },
+                "TST": {
+                    "val": 0
+                }
             }
         }
     }

@@ -44,7 +44,7 @@ class byte_decoder:
         
         block_number= 1
         while self.index_position < message_length:
-            print("block: ",block_number," byte position(from 0): ", self.index_position)
+            # print("block: ",block_number," byte position(from 0): ", self.index_position)
         
             # Read FSPEC field
             fspec_field= []
@@ -294,6 +294,7 @@ class byte_decoder:
         out["Change in Mode 3/A"]= decode_functions.des2val_des(out["Change in Mode 3/A"], ["No change","Mode 3/A has Changed"])
         if int(first_byte[3]) == 0:
             print("warning: I062_060: detect unexpected non-zero bit!")
+            pass
         second_byte= bin(self.byte_data[index_start+1])[2:].zfill(8)
         combined_byte= (first_byte[4:] + second_byte).zfill(16)
 
@@ -440,6 +441,7 @@ class byte_decoder:
                 out[key]= I062_080_mapping[key][int(binary_str[ik:ik+2],2)]
             else:
                 out[key]= I062_080_mapping[key][int(binary_str[ik])]
+            out[key]= decode_functions.des2val_des(out[key], I062_080_mapping[key])
 
         pop_key_list=[]
         for ik, key in enumerate(out.keys()):

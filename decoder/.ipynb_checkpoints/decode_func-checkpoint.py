@@ -85,12 +85,18 @@ class decode_functions:
         elif isinstance(obj, str):
             val= obj
             try:
-                val= float(obj)
+                val= int(obj)
             except:
                 try:
-                    val= int(obj)
+                    val= float(obj)
                 except:
-                    pass
+                    if " " in obj:
+                        try:
+                            val= float(obj[:obj.rfind(" ")])
+                        except:
+                            pass
+                    else:
+                        pass
             return val
         else:
             return obj
