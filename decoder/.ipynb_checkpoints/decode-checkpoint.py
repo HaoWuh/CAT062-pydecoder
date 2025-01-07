@@ -290,7 +290,7 @@ class byte_decoder:
         out["G"]= "Default" if int(first_byte[1]) == 0 else "Garbled"
         out["Change in Mode 3/A"]= "No change" if first_byte[2] == 0 else "Mode 3/A has Changed"
         if int(first_byte[3]) == 0:
-            print("warning: I062_060: bit must be 0!")
+            print("warning: I062_060: detect unexpected non-zero bit!")
         second_byte= bin(self.byte_data[index_start+1])[2:].zfill(8)
         combined_byte= (first_byte[4:] + second_byte).zfill(16)
 

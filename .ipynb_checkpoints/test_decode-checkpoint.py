@@ -8,7 +8,42 @@ bytes=[0x3e, 0x00, 0xc7, 0x81, 0x01, 0x02, 0x19, 0x19, 0xef, 0xcc, 0x19, 0x19, 0
 # RR= Raw_Reader("data/sample.raw")
 # bytes= RR.data
 
-BD= byte_decoder(data= bytes)
+# single test!
+# BD= byte_decoder(data= bytes)
+# # print(BD.process_byte_data())
 # print(BD.process_byte_data())
-print(BD.process_byte_data())
 # BD.save2json()
+
+
+
+# generate a ckeck.json
+###
+def generate_check_json(result):
+    check_list= []
+    for key in result.keys():
+        if 'block' in key:
+            block_dict= dict()
+            for key1 in result[key].keys():
+                if 'I062' in key1:
+                    block_dict[key1[:8]]= dict()
+                    for key2, item in result[key][key1].items():
+                        # block_dict[key1]= get_val(item)
+                        block_dict[key1[:8]][key2]= item
+                
+        
+            check_list.append(block_dict)
+            
+    byte_decoder.save2json_static(check_list, save_name= "check")
+    print("check saved!")
+            
+def get_val(item):
+    if isintance(item, dict):
+        tmp_dict=dict()
+        for k, i in item.items():
+            tmp_dict[k]= get_val(i)
+
+
+
+BD= byte_decoder(data= bytes)
+generate_check_json(BD.process_byte_data())
+###

@@ -1,0 +1,226 @@
+[
+    {
+        "I062_010": {
+            "SAC": "25",
+            "SIC": "25"
+        },
+        "I062_390": {
+            "(TAG)": {
+                "SAC": "25",
+                "SIC": "25"
+            },
+            "(CSN)": {
+                "Callsign": "CCA1517"
+            },
+            "(IFI)": {
+                "TYP": "Plan Number",
+                "NBR": "8334"
+            },
+            "(TAC)": {
+                "Type of aircraft": "A321"
+            },
+            "(WTC)": {
+                "Wake turbulence category": "M"
+            },
+            "(DEP)": {
+                "Departure airport": "ZBAA"
+            },
+            "(DST)": {
+                "Destination airport": "ZSSS"
+            },
+            "(RDS)": {
+                "NU1": "3",
+                "NU2": "6",
+                "LTR": "R"
+            },
+            "(TOD)": {
+                "REP": "2",
+                "rep_content": [
+                    {
+                        "TYP": "Estimated time of arrival",
+                        "DAY": "Today",
+                        "HOR": "7",
+                        "MIN": "24",
+                        "AVS": "0",
+                        "SEC": "0"
+                    },
+                    {
+                        "TYP": "Actual landing time",
+                        "DAY": "Today",
+                        "HOR": "7",
+                        "MIN": "22",
+                        "AVS": "0",
+                        "SEC": "0"
+                    }
+                ]
+            },
+            "(AST)": {
+                "Aircraft stand": "227   "
+            }
+        }
+    },
+    {
+        "I062_010": {
+            "SAC": "25",
+            "SIC": "25"
+        },
+        "I062_390": {
+            "(TAG)": {
+                "SAC": "25",
+                "SIC": "25"
+            },
+            "(CSN)": {
+                "Callsign": "CSN6981"
+            },
+            "(IFI)": {
+                "TYP": "Plan Number",
+                "NBR": "7442"
+            },
+            "(TAC)": {
+                "Type of aircraft": "B738"
+            },
+            "(WTC)": {
+                "Wake turbulence category": "M"
+            },
+            "(DEP)": {
+                "Departure airport": "ZWWW"
+            },
+            "(DST)": {
+                "Destination airport": "ZSSS"
+            },
+            "(RDS)": {
+                "NU1": "3",
+                "NU2": "6",
+                "LTR": "R"
+            },
+            "(TOD)": {
+                "REP": "1",
+                "rep_content": [
+                    {
+                        "TYP": "Estimated time of arrival",
+                        "DAY": "Today",
+                        "HOR": "7",
+                        "MIN": "53",
+                        "AVS": "0",
+                        "SEC": "0"
+                    }
+                ]
+            },
+            "(AST)": {
+                "Aircraft stand": "266   "
+            }
+        }
+    },
+    {
+        "I062_010": {
+            "SAC": "25",
+            "SIC": "25"
+        },
+        "I062_390": {
+            "(TAG)": {
+                "SAC": "25",
+                "SIC": "25"
+            },
+            "(CSN)": {
+                "Callsign": "CES2159"
+            },
+            "(IFI)": {
+                "TYP": "Plan Number",
+                "NBR": "8572"
+            },
+            "(TAC)": {
+                "Type of aircraft": "A20N"
+            },
+            "(WTC)": {
+                "Wake turbulence category": "M"
+            },
+            "(DEP)": {
+                "Departure airport": "ZLXY"
+            },
+            "(DST)": {
+                "Destination airport": "ZSSS"
+            },
+            "(RDS)": {
+                "NU1": "3",
+                "NU2": "6",
+                "LTR": "R"
+            },
+            "(TOD)": {
+                "REP": "2",
+                "rep_content": [
+                    {
+                        "TYP": "Estimated time of arrival",
+                        "DAY": "Today",
+                        "HOR": "7",
+                        "MIN": "45",
+                        "AVS": "0",
+                        "SEC": "0"
+                    },
+                    {
+                        "TYP": "Actual landing time",
+                        "DAY": "Today",
+                        "HOR": "7",
+                        "MIN": "43",
+                        "AVS": "0",
+                        "SEC": "0"
+                    }
+                ]
+            },
+            "(AST)": {
+                "Aircraft stand": "412   "
+            }
+        }
+    },
+    {
+        "I062_010": {
+            "SAC": "25",
+            "SIC": "25"
+        },
+        "I062_390": {
+            "(TAG)": {
+                "SAC": "25",
+                "SIC": "25"
+            },
+            "(CSN)": {
+                "Callsign": "CES5114"
+            },
+            "(IFI)": {
+                "TYP": "Plan Number",
+                "NBR": "5181"
+            },
+            "(TAC)": {
+                "Type of aircraft": "A332"
+            },
+            "(WTC)": {
+                "Wake turbulence category": "H"
+            },
+            "(DEP)": {
+                "Departure airport": "ZBAA"
+            },
+            "(DST)": {
+                "Destination airport": "ZSSS"
+            },
+            "(RDS)": {
+                "NU1": "3",
+                "NU2": "6",
+                "LTR": "R"
+            },
+            "(TOD)": {
+                "REP": "1",
+                "rep_content": [
+                    {
+                        "TYP": "Estimated time of arrival",
+                        "DAY": "Today",
+                        "HOR": "7",
+                        "MIN": "50",
+                        "AVS": "0",
+                        "SEC": "0"
+                    }
+                ]
+            },
+            "(AST)": {
+                "Aircraft stand": "230   "
+            }
+        }
+    }
+]

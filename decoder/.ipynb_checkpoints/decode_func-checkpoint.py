@@ -733,7 +733,7 @@ class decode_functions:
         out["HPR"]= hpr_list[int(binary_str[6:7],2)]
 
         if binary_str[7] == "0":
-            print("warning: bit must be 0")
+            print("warning: detect unexpected non-zero bit!")
 
         return out
     
