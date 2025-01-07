@@ -287,8 +287,11 @@ class byte_decoder:
         out= dict()
         first_byte= bin(self.byte_data[index_start])[2:].zfill(8)
         out["V"]= "validated" if int(first_byte[0]) == 0 else "not validated"
+        out["V"]= decode_functions.des2val_des(out["V"],["validated","not validated"])
         out["G"]= "Default" if int(first_byte[1]) == 0 else "Garbled"
+        out["G"]= decode_functions.des2val_des(out["G"], ["Default","Garbled"])
         out["Change in Mode 3/A"]= "No change" if first_byte[2] == 0 else "Mode 3/A has Changed"
+        out["Change in Mode 3/A"]= decode_functions.des2val_des(out["Change in Mode 3/A"], ["No change","Mode 3/A has Changed"])
         if int(first_byte[3]) == 0:
             print("warning: I062_060: detect unexpected non-zero bit!")
         second_byte= bin(self.byte_data[index_start+1])[2:].zfill(8)
@@ -616,6 +619,7 @@ class byte_decoder:
         out=dict()
         binary_str = "".join(format(byte, '08b') for byte in self.byte_data[index_start:index_end])
         out["QNH"]= "No QNH correction applied" if int(binary_str[0]) == 0 else "QNH correction applied"
+        out["QNH"]= decode_functions.des2val_des(out["QNH"], ["No QNH correction applied","QNH correction applied"])
         out["Barometric altitude"]= str(float(int(decode_functions.invert_binary_if_negative(binary_str[1:]),2))*0.25) + " "+ "FL"
         return out, index_end-index_start
 
@@ -755,6 +759,7 @@ class byte_decoder:
         vfi_list= ["Unknown", "ATC equipment maintenance", "Airport maintenance", "Fire", "Bird scarer", "Snow plough", "Runway sweeper", 
  "Emergency", "Police", "Bus", "Tug (push/tow)", "Grass cutter", "Fuel", "Baggage", "Catering", "Aircraft maintenance", "Flyco (follow me)"]
         out["VFI"]= vfi_list[int("".join(format(byte, '08b') for byte in self.byte_data[index_start:index_end]),2)]
+        out["VFI"]= decode_functions.des2val_des(out["VFI"], vif_list)
 
         return out, index_end-index_start
     

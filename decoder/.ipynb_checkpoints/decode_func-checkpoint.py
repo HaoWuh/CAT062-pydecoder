@@ -58,6 +58,42 @@ class decode_functions:
             return chr(ord('0')+byte_number-48)
         else:
             return ""
+        
+        
+    @staticmethod
+    def des2val_des(des, des_list):
+        return {'val': des_list.index(des), 'meaning': des}
+    
+    
+    
+    @staticmethod
+    def clean_str2val(obj):
+        if isinstance(obj, list):
+            for ob in obj:
+                ob= decode_functions.clean_str2val(ob)
+            return obj
+        
+        elif isinstance(obj, dict):
+            ks= [k for k in obj.keys()]
+            for key in ks:
+                if (key[0] == '(' and key[-1] == ')'):
+                    obj[key[1:-1]]= decode_functions.clean_str2val(obj.pop(key))
+                else:
+                    obj[key]= decode_functions.clean_str2val(obj[key])
+            return obj
+                
+        elif isinstance(obj, str):
+            val= obj
+            try:
+                val= float(obj)
+            except:
+                try:
+                    val= int(obj)
+                except:
+                    pass
+            return val
+        else:
+            return obj
     
 
 
@@ -128,6 +164,7 @@ class decode_functions:
         out["SAS"]= "provided" if int(binary_str[0]) == 1 else "not provided"
         source_list= ["Unknown","Aircraft alttitude","FCU/MCP selected alttitude","FMS selected alttitude"]
         out["Source"]= source_list[int(binary_str[1:3],2)]
+        out["Source"]= decode_functions.des2val_des(out["Source"], source_list)
         out["Alttitude"]= str(int(alttitude_str,2)*25)+" "+"ft"
 
         return out
@@ -153,7 +190,9 @@ class decode_functions:
         out= dict()
         binary_str= "".join([format(b, '08b') for b in b_data])
         out["NAV"]= "available" if int(binary_str[0]) == 0 else "not available"
+        out["NAV"]= decode_functions.des2val_des(out["NAV"], ["available","not available"])
         out["NVB"]= "valid" if int(binary_str[1]) == 0 else "not valid"
+        out["NVB"]= decode_functions.des2val_des(out["NVB"], ["valid","not valid"])
         return out
     
 
@@ -192,6 +231,7 @@ class decode_functions:
                     "Transition altitude (VT)"
                 ]
         out["Point type"]= point_list[int(binary_str[80:84],2)]
+        out["Point type"]= decode_functions.des2val_des(out["Point type"], point_list)
 
         td_list= [
                     "N/A",
@@ -200,9 +240,12 @@ class decode_functions:
                     "No turn"
                 ]
         out["TD"]= td_list[int(binary_str[84:86],2)]
+        out["TD"]= decode_functions.des2val_des(out["TD"], td_list)
 
         out["TRA"]= "TTR not available" if int(binary_str[86]) == 0 else "TTR available"
+        out["TRA"]= decode_functions.des2val_des(out["TRA"], ["TTR not available","TTR available"])
         out["TOA"]= "TOV available" if int(binary_str[87]) == 0 else "TOV not available"
+        out["TOA"]= decode_functions.des2val_des(out["TOA"], ["TOV available","TOV not available"])
 
         tov_str= decode_functions.invert_binary_if_negative(binary_str[88:112])
         out["TOV"]= str(int(tov_str,2)*1)+" "+"second"
@@ -228,6 +271,7 @@ class decode_functions:
                     "Level 5 Transponder capability"
                 ]
         out["COM"]= com_list[int(binary_str[0:3],2)]
+        out["COM"]= decode_functions.des2val_des(out["COM"], com_list)
 
         stat_list= [
                     "No alert, no SPI, aircraft airborne",
@@ -240,11 +284,15 @@ class decode_functions:
                     "Unknown or not yet extracted"
                 ]
         out["STAT"]= stat_list[int(binary_str[3:6],2)]
+        out["STAT"]= decode_functions.des2val_des(out["STAT"], stat_list)
         assert binary_str[6:8] == "00", "bits must be 00"
 
         out["SSC"]= "No" if int(binary_str[8]) == 0 else "Yes"
+        out["SSC"]= decode_functions.des2val_des(out["SSC"], ["No","Yes"])
         out["ARC"]= ("100" if int(binary_str[9]) == 0 else "25") + " ft resolution"
+        out["ARC"]= decode_functions.des2val_des(out["ARC"], ["100 ft resolution","25 ft resolution"])
         out["AIC"]= "No" if int(binary_str[10]) == 0 else "Yes"
+        out["AIC"]= decode_functions.des2val_des(out["AIC"], ["No","Yes"])
         out["B1A"]= binary_str[11]
         out["B1B"]= binary_str[12:16]
 
@@ -267,6 +315,7 @@ class decode_functions:
                     "invalid"
                 ]
         out["AC"]= ac_list[int(binary_str[0:2],2)]
+        out["AC"]= decode_functions.des2val_des(out["AC"], ac_list)
 
         mn_list= [
                     "unknown",
@@ -275,6 +324,7 @@ class decode_functions:
                     "invalid"
                 ]
         out["MN"]= mn_list[int(binary_str[2:4],2)]
+        out["MN"]= decode_functions.des2val_des(out["MN"], mn_list)
 
         dc_list= [
                     "unknown",
@@ -283,8 +333,10 @@ class decode_functions:
                     "invalid"
                 ]
         out["DC"]= dc_list[int(binary_str[4:6],2)]
+        out["DC"]= decode_functions.des2val_des(out["DC"], dc_list)
 
         out["GBS"]= "Transponder Ground Bit "+ ("not set or unknown" if int(binary_str[6]) == 0 else "set")
+        out["GBS"]= decode_functions.des2val_des(out["GBS"], ["Transponder Ground Bit not set or unknown","Transponder Ground Bit set"])
         assert binary_str[7:13] == "000000", "bits must be 000000"
 
         stat_list=[
@@ -298,6 +350,7 @@ class decode_functions:
                     "Unknown"
                 ]
         out["STAT"]= stat_list[int(binary_str[13:16],2)]
+        out["STAT"]= decode_functions.des2val_des(out["STAT"], stat_list)
 
         return out
     
@@ -353,6 +406,7 @@ class decode_functions:
                     "Straight"
                 ]
         out["TI"]= ti_list[int(binary_str[0:2],2)]
+        out["TI"]= decode_functions.des2val_des(out["TI"], ti_list)
         assert binary_str[2:8] == "000000", "bits must be 000000"
         rt_str= decode_functions.invert_binary_if_negative(binary_str[8:15])
         out["Rate of turn"]= str(int(rt_str,2)*0.25)+" "+"deg/s"
@@ -402,9 +456,13 @@ class decode_functions:
         binary_str= "".join([format(b, '08b') for b in b_data])
 
         out["WS"]= ("Not valid" if int(binary_str[0]) == 0 else "Valid") + " wind speed"
+        out["WS"]= decode_functions.des2val_des(out["WS"], ["Not valid wind speed","Valid wind speed"])
         out["WD"]= ("Not valid" if int(binary_str[1]) == 0 else "Valid") + " wind direction"
+        out["WD"]= decode_functions.des2val_des(out["WD"], ["Not valid wind direction","Valid wind direction"])
         out["TMP"]= ("Not valid" if int(binary_str[2]) == 0 else "Valid") + " temperature"
+        out["TMP"]= decode_functions.des2val_des(out["TMP"], ["Not valid temperature","Valid temperature"])
         out["TRB"]= ("Not valid" if int(binary_str[3]) == 0 else "Valid") + " turbulence"
+        out["TRB"]= decode_functions.des2val_des(out["TRB"], ["Not valid turbulence","Valid turbulence"])
 
         assert binary_str[4:8] == "0000", "bits must be 0000"
 
@@ -706,6 +764,7 @@ class decode_functions:
 
         typ_list= ["Plan Number", "Unit 1 internal flight number", "Unit 2 internal flight number", "Unit 3 internal flight number"]
         out["TYP"]= typ_list[int(binary_str[0:2],2)]
+        out["TYP"]= decode_functions.des2val_des(out["TYP"], typ_list)
 
         assert binary_str[2:5] == "000", "bit must be 000"
 
@@ -722,15 +781,19 @@ class decode_functions:
 
         gatoat_list= ["Unknown", "General Air Traffic", "Operational Air Traffic", "Not applicable"]
         out["GAT/OAT"]= gatoat_list[int(binary_str[0:2],2)]
+        out["GAT/OAT"]= decode_functions.des2val_des(out["GAT/OAT"], gatoat_list)
 
         fr1fr2_list= ["Instrument Flight Rules", "Visual Flight Rules", "Not applicable", "Controlled Visual Flight Rules"]
         out["FR1/FR2"]= fr1fr2_list[int(binary_str[2:4],2)]
+        out["FR1/FR2"]= decode_functions.des2val_des(out["FR1/FR2"], fr1fr2_list)
 
         rvsm_list= ["Unknown", "Approved", "Exempt", "Not Approved"]
         out["RVSM"]= rvsm_list[int(binary_str[4:6],2)]
+        out["RVSM"]= decode_functions.des2val_des(out["RVSM"], rvsm_list)
 
         hpr_list= ["Normal Priority Flight", "High Priority Flight"]
         out["HPR"]= hpr_list[int(binary_str[6:7],2)]
+        out["HPR"]= decode_functions.des2val_des(out["HPR"], hpr_list)
 
         if binary_str[7] == "0":
             print("warning: detect unexpected non-zero bit!")
@@ -844,10 +907,12 @@ class decode_functions:
      "Estimated time of arrival", "Predicted landing time", "Actual landing time", "Actual time off runway", 
      "Predicted time to gate", "Actual on-block time"]
             rep_dict["TYP"]= typ_list[int(binary_str[pos:pos+5],2)]
+            rep_dict["TYP"]= decode_functions.des2val_des(rep_dict["TYP"], typ_list)
             pos+= 5
             
             day_list= ["Today", "Yesterday", "Tomorrow", "Invalid"]
             rep_dict["DAY"]= day_list[int(binary_str[pos:pos+2],2)]
+            rep_dict["DAY"]= decode_functions.des2val_des(rep_dict["DAY"], day_list)
             pos+= 2
 
             assert binary_str[pos] == "0", "bit must be 0"
@@ -901,9 +966,11 @@ class decode_functions:
 
         emp_list= ["Empty", "Occupied", "Unknown", "Invalid"]
         out["EMP"]= emp_list(int(binary_str[0:2],2))
+        out["EMP"]= decode_functions.des2val_des(out["EMP"], emp_list)
 
         avl_list= ["Available", "Not available", "Unknown", "Invalid"]
         out["AVL"]= avl_list(int(binary_str[2:4],2))
+        out["AVL"]= decode_functions.des2val_des(out["AVL"], avl_list)
 
         return out
     
@@ -1001,27 +1068,35 @@ class decode_functions:
 
         m5_list= ["No Mode 5 interrogation", "Mode 5 interrogation"]
         out["M5"]= m5_list[int(binary_str[0:1],2)]
+        out["M5"]= decode_functions.des2val_des(out["M5"], m5_list)
 
         id_list= ["No authenticated Mode 5 ID reply", "Authenticated Mode 5 ID reply"]
         out["ID"]= id_list[int(binary_str[1:2],2)]
+        out["ID"]= decode_functions.des2val_des(out["ID"], id_list)
 
         da_list= ["No authenticated Mode 5 Data reply or Report", "Authenticated Mode 5 Data reply or Report (i.e any valid Mode 5 reply type other than ID)"]
         out["DA"]= da_list[int(binary_str[2:3],2)]
+        out["DA"]= decode_functions.des2val_des(out["DA"], da_list)
 
         m1_list= ["Mode 1 code not present or not from Mode 5 reply", "Mode 1 code from Mode 5 reply"]
         out["M1"]= m1_list[int(binary_str[3:4],2)]
+        out["M1"]= decode_functions.des2val_des(out["M1"], m1_list)
 
         m2_list=["Mode 2 code not present or not from Mode 5 reply", "Mode 2 code from Mode 5 reply"]
         out["M2"]= m2_list[int(binary_str[4:5],2)]
+        out["M2"]= decode_functions.des2val_des(out["M2"], m2_list)
 
         m3_list=["Mode 3 code not present or not from Mode 5 reply", "Mode 3 code from Mode 5 reply"]
         out["M3"]= m3_list[int(binary_str[5:6],2)]
+        out["M3"]= decode_functions.des2val_des(out["M3"], m3_list)
 
         mc_list=["Mode C code not present or not from Mode 5 reply", "Mode C code from Mode 5 reply"]
         out["MC"]= mc_list[int(binary_str[6:7],2)]
+        out["MC"]= decode_functions.des2val_des(out["MC"], mc_list)
 
         x_list= ["X-pulse set to zero or no authenticated Data reply or Report received", "X-pulse set to one"]
         out["X"]= x_list[int(binary_str[7:8],2)]
+        out["X"]= decode_functions.des2val_des(out["X"], x_list)
 
         return out
 
@@ -1072,6 +1147,7 @@ class decode_functions:
         assert binary_str[0:1] == "0", "bit must be 0"
 
         out["RES"]= "GA reported in 100 ft increments" if int(binary_str[1]) == 0 else "GA reported in 25 ft increments"
+        out["RES"]= decode_functions.des2val_des(out["RES"], ["GA reported in 100 ft increments","GA reported in 25 ft increments"])
 
         ga_str= binary_str[2:16]
         out["GA"]= str(int(ga_str,2)*100.0)+" "+"ft" if int(binary_str[1]) == 0 else str(int(ga_str,2)*25.0)+" "+"ft"
@@ -1266,7 +1342,9 @@ class decode_functions:
         binary_str= "".join([format(b, '08b') for b in b_data])
         
         out["V"]= "Code validated" if int(binary_str[0]) == 0 else "Code not validated"
+        out["V"]= decode_functions.des2val_des(out["V"], ["Code validated","Code not validated"])
         out["G"]= "Default" if int(binary_str[1]) == 0 else "Garbled code"
+        out["G"]= decode_functions.des2val_des(out["G"], ["Default","Garbled code"])
 
         lmmc_str= binary_str[2]
         out["Last Measured Mode C Code"]= str(int(lmmc_str,2)*0.25) + " "+"FL"
@@ -1281,9 +1359,12 @@ class decode_functions:
         binary_str= "".join([format(b, '08b') for b in b_data])
 
         out["V"]= "Code validated" if int(binary_str[0]) == 0 else "Code not validated"
+        out["V"]= decode_functions.des2val_des(out["V"], ["Code validated","Code not validated"])
         out["G"]= "Default" if int(binary_str[1]) == 0 else "Garbled code"
+        out["G"]= decode_functions.des2val_des(out["G"], ["Default","Garbled code"])
         l_list= ["MODE 3/A code as derived from the reply of the transponder", "Smoothed MODE 3/A code as provided by a sensor local tracker"]
         out["L"]= l_list[int(binary_str[2])]
+        out["L"]= decode_functions.des2val_des(out["L"], l_list)
 
         assert binary_str[3] == "0", "Reserved bit must be 0"
 
@@ -1300,15 +1381,19 @@ class decode_functions:
         typ_list= ["No detection", "Single PSR detection", "Single SSR detection", "SSR + PSR detection", 
  "Single ModeS All-Call", "Single ModeS Roll-Call", "ModeS All-Call + PSR", "ModeS Roll-Call + PSR"]
         out["TYP"]= typ_list[int(binary_str[:3],2)]
+        out["TYP"]= decode_functions.des2val_des(out["TYP"], typ_list)
 
         sim_list= ["Actual target report", "Simulated target report"]
         out["SIM"]= sim_list[int(binary_str[3])]
+        out["SIM"]= decode_functions.des2val_des(out["SIM"], sim_list)
 
         rab_list= ["Report from target transponder", "Report from field monitor (fixed transponder)"]
         out["RAB"]= rab_list[int(binary_str[4])]
+        out["RAB"]= decode_functions.des2val_des(out["RAB"], rab_list)
 
         tst_list= ["Real target report", "Test target report"]
         out["TST"]= tst_list[int(binary_str[5])]
+        out["TST"]= decode_functions.des2val_des(out["TST"], tst_list)
 
         if binary_str[6:] == "00":
             pass

@@ -17,7 +17,10 @@
                 "Callsign": "CCA1517"
             },
             "(IFI)": {
-                "TYP": "Plan Number",
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
                 "NBR": "8334"
             },
             "(TAC)": {
@@ -41,16 +44,28 @@
                 "REP": "2",
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
                         "HOR": "7",
                         "MIN": "24",
                         "AVS": "0",
                         "SEC": "0"
                     },
                     {
-                        "TYP": "Actual landing time",
-                        "DAY": "Today",
+                        "TYP": {
+                            "val": 10,
+                            "meaning": "Actual landing time"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
                         "HOR": "7",
                         "MIN": "22",
                         "AVS": "0",
@@ -77,7 +92,10 @@
                 "Callsign": "CSN6981"
             },
             "(IFI)": {
-                "TYP": "Plan Number",
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
                 "NBR": "7442"
             },
             "(TAC)": {
@@ -101,8 +119,14 @@
                 "REP": "1",
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
                         "HOR": "7",
                         "MIN": "53",
                         "AVS": "0",
@@ -129,7 +153,10 @@
                 "Callsign": "CES2159"
             },
             "(IFI)": {
-                "TYP": "Plan Number",
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
                 "NBR": "8572"
             },
             "(TAC)": {
@@ -153,16 +180,28 @@
                 "REP": "2",
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
                         "HOR": "7",
                         "MIN": "45",
                         "AVS": "0",
                         "SEC": "0"
                     },
                     {
-                        "TYP": "Actual landing time",
-                        "DAY": "Today",
+                        "TYP": {
+                            "val": 10,
+                            "meaning": "Actual landing time"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
                         "HOR": "7",
                         "MIN": "43",
                         "AVS": "0",
@@ -189,7 +228,10 @@
                 "Callsign": "CES5114"
             },
             "(IFI)": {
-                "TYP": "Plan Number",
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
                 "NBR": "5181"
             },
             "(TAC)": {
@@ -213,8 +255,14 @@
                 "REP": "1",
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
                         "HOR": "7",
                         "MIN": "50",
                         "AVS": "0",

@@ -1,225 +1,273 @@
 [
     {
         "I062_010": {
-            "SAC": "25",
-            "SIC": "25"
+            "SAC": 25.0,
+            "SIC": 25.0
         },
         "I062_390": {
-            "(TAG)": {
-                "SAC": "25",
-                "SIC": "25"
+            "TAG": {
+                "SAC": 25.0,
+                "SIC": 25.0
             },
-            "(CSN)": {
+            "CSN": {
                 "Callsign": "CCA1517"
             },
-            "(IFI)": {
-                "TYP": "Plan Number",
-                "NBR": "8334"
+            "IFI": {
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
+                "NBR": 8334.0
             },
-            "(TAC)": {
+            "TAC": {
                 "Type of aircraft": "A321"
             },
-            "(WTC)": {
+            "WTC": {
                 "Wake turbulence category": "M"
             },
-            "(DEP)": {
+            "DEP": {
                 "Departure airport": "ZBAA"
             },
-            "(DST)": {
+            "DST": {
                 "Destination airport": "ZSSS"
             },
-            "(RDS)": {
-                "NU1": "3",
-                "NU2": "6",
+            "RDS": {
+                "NU1": 3.0,
+                "NU2": 6.0,
                 "LTR": "R"
             },
-            "(TOD)": {
-                "REP": "2",
+            "TOD": {
+                "REP": 2.0,
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
-                        "HOR": "7",
-                        "MIN": "24",
-                        "AVS": "0",
-                        "SEC": "0"
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
+                        "HOR": 7.0,
+                        "MIN": 24.0,
+                        "AVS": 0.0,
+                        "SEC": 0.0
                     },
                     {
-                        "TYP": "Actual landing time",
-                        "DAY": "Today",
-                        "HOR": "7",
-                        "MIN": "22",
-                        "AVS": "0",
-                        "SEC": "0"
+                        "TYP": {
+                            "val": 10,
+                            "meaning": "Actual landing time"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
+                        "HOR": 7.0,
+                        "MIN": 22.0,
+                        "AVS": 0.0,
+                        "SEC": 0.0
                     }
                 ]
             },
-            "(AST)": {
-                "Aircraft stand": "227   "
+            "AST": {
+                "Aircraft stand": 227.0
             }
         }
     },
     {
         "I062_010": {
-            "SAC": "25",
-            "SIC": "25"
+            "SAC": 25.0,
+            "SIC": 25.0
         },
         "I062_390": {
-            "(TAG)": {
-                "SAC": "25",
-                "SIC": "25"
+            "TAG": {
+                "SAC": 25.0,
+                "SIC": 25.0
             },
-            "(CSN)": {
+            "CSN": {
                 "Callsign": "CSN6981"
             },
-            "(IFI)": {
-                "TYP": "Plan Number",
-                "NBR": "7442"
+            "IFI": {
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
+                "NBR": 7442.0
             },
-            "(TAC)": {
+            "TAC": {
                 "Type of aircraft": "B738"
             },
-            "(WTC)": {
+            "WTC": {
                 "Wake turbulence category": "M"
             },
-            "(DEP)": {
+            "DEP": {
                 "Departure airport": "ZWWW"
             },
-            "(DST)": {
+            "DST": {
                 "Destination airport": "ZSSS"
             },
-            "(RDS)": {
-                "NU1": "3",
-                "NU2": "6",
+            "RDS": {
+                "NU1": 3.0,
+                "NU2": 6.0,
                 "LTR": "R"
             },
-            "(TOD)": {
-                "REP": "1",
+            "TOD": {
+                "REP": 1.0,
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
-                        "HOR": "7",
-                        "MIN": "53",
-                        "AVS": "0",
-                        "SEC": "0"
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
+                        "HOR": 7.0,
+                        "MIN": 53.0,
+                        "AVS": 0.0,
+                        "SEC": 0.0
                     }
                 ]
             },
-            "(AST)": {
-                "Aircraft stand": "266   "
+            "AST": {
+                "Aircraft stand": 266.0
             }
         }
     },
     {
         "I062_010": {
-            "SAC": "25",
-            "SIC": "25"
+            "SAC": 25.0,
+            "SIC": 25.0
         },
         "I062_390": {
-            "(TAG)": {
-                "SAC": "25",
-                "SIC": "25"
+            "TAG": {
+                "SAC": 25.0,
+                "SIC": 25.0
             },
-            "(CSN)": {
+            "CSN": {
                 "Callsign": "CES2159"
             },
-            "(IFI)": {
-                "TYP": "Plan Number",
-                "NBR": "8572"
+            "IFI": {
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
+                "NBR": 8572.0
             },
-            "(TAC)": {
+            "TAC": {
                 "Type of aircraft": "A20N"
             },
-            "(WTC)": {
+            "WTC": {
                 "Wake turbulence category": "M"
             },
-            "(DEP)": {
+            "DEP": {
                 "Departure airport": "ZLXY"
             },
-            "(DST)": {
+            "DST": {
                 "Destination airport": "ZSSS"
             },
-            "(RDS)": {
-                "NU1": "3",
-                "NU2": "6",
+            "RDS": {
+                "NU1": 3.0,
+                "NU2": 6.0,
                 "LTR": "R"
             },
-            "(TOD)": {
-                "REP": "2",
+            "TOD": {
+                "REP": 2.0,
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
-                        "HOR": "7",
-                        "MIN": "45",
-                        "AVS": "0",
-                        "SEC": "0"
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
+                        "HOR": 7.0,
+                        "MIN": 45.0,
+                        "AVS": 0.0,
+                        "SEC": 0.0
                     },
                     {
-                        "TYP": "Actual landing time",
-                        "DAY": "Today",
-                        "HOR": "7",
-                        "MIN": "43",
-                        "AVS": "0",
-                        "SEC": "0"
+                        "TYP": {
+                            "val": 10,
+                            "meaning": "Actual landing time"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
+                        "HOR": 7.0,
+                        "MIN": 43.0,
+                        "AVS": 0.0,
+                        "SEC": 0.0
                     }
                 ]
             },
-            "(AST)": {
-                "Aircraft stand": "412   "
+            "AST": {
+                "Aircraft stand": 412.0
             }
         }
     },
     {
         "I062_010": {
-            "SAC": "25",
-            "SIC": "25"
+            "SAC": 25.0,
+            "SIC": 25.0
         },
         "I062_390": {
-            "(TAG)": {
-                "SAC": "25",
-                "SIC": "25"
+            "TAG": {
+                "SAC": 25.0,
+                "SIC": 25.0
             },
-            "(CSN)": {
+            "CSN": {
                 "Callsign": "CES5114"
             },
-            "(IFI)": {
-                "TYP": "Plan Number",
-                "NBR": "5181"
+            "IFI": {
+                "TYP": {
+                    "val": 0,
+                    "meaning": "Plan Number"
+                },
+                "NBR": 5181.0
             },
-            "(TAC)": {
+            "TAC": {
                 "Type of aircraft": "A332"
             },
-            "(WTC)": {
+            "WTC": {
                 "Wake turbulence category": "H"
             },
-            "(DEP)": {
+            "DEP": {
                 "Departure airport": "ZBAA"
             },
-            "(DST)": {
+            "DST": {
                 "Destination airport": "ZSSS"
             },
-            "(RDS)": {
-                "NU1": "3",
-                "NU2": "6",
+            "RDS": {
+                "NU1": 3.0,
+                "NU2": 6.0,
                 "LTR": "R"
             },
-            "(TOD)": {
-                "REP": "1",
+            "TOD": {
+                "REP": 1.0,
                 "rep_content": [
                     {
-                        "TYP": "Estimated time of arrival",
-                        "DAY": "Today",
-                        "HOR": "7",
-                        "MIN": "50",
-                        "AVS": "0",
-                        "SEC": "0"
+                        "TYP": {
+                            "val": 8,
+                            "meaning": "Estimated time of arrival"
+                        },
+                        "DAY": {
+                            "val": 0,
+                            "meaning": "Today"
+                        },
+                        "HOR": 7.0,
+                        "MIN": 50.0,
+                        "AVS": 0.0,
+                        "SEC": 0.0
                     }
                 ]
             },
-            "(AST)": {
-                "Aircraft stand": "230   "
+            "AST": {
+                "Aircraft stand": 230.0
             }
         }
     }

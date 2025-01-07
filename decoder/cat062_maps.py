@@ -85,8 +85,8 @@ I062_080_mapping= {
     # 0
     "(MON)": ["Multisensor track", "Monosensor track"],  # bit-8
     "(SPI)": ["default value", "SPI present in the last report received from a sensor capable of decoding this data"],  # bit-7
-    "Most Reliable Height (MRH)": ["Barometric altitude (Mode C) more reliable", "Geometric altitude more reliable"],  # bit-6
-    "Source of calculated track altitude for I062/130 (SRC)": [
+    "(MRH)": ["Barometric altitude (Mode C) more reliable", "Geometric altitude more reliable"],  # bit-6
+    "(SRC)": [
         "no source",
         "GNSS",
         "3D radar",
@@ -133,11 +133,11 @@ I062_080_mapping= {
     "(FX) 3": ["End of data item", "Extension into next extent"],  # bit-1
     
     # 4
-    "Surveillance Data Status  (SDS)": ["Combined", "Co-operative only", "Non-Cooperative only", "Not defined"],  # bits-8/7
-    "Surveillance Data Status  (SDS)_copy1": ["Combined", "Co-operative only", "Non-Cooperative only", "Not defined"],  # bits-8/7
-    "Emergency Status Indication (EMS)": ["No emergency", "General emergency", "Lifeguard / medical", "Minimum fuel", "No communications", "Unlawful interference", "“Downed” Aircraft", "Undefined"],  # bits-6/4
-    "Emergency Status Indication (EMS)_copy1": ["No emergency", "General emergency", "Lifeguard / medical", "Minimum fuel", "No communications", "Unlawful interference", "“Downed” Aircraft", "Undefined"],  # bits-6/4
-    "Emergency Status Indication (EMS)_copy2": ["No emergency", "General emergency", "Lifeguard / medical", "Minimum fuel", "No communications", "Unlawful interference", "“Downed” Aircraft", "Undefined"],  # bits-6/4
+    "(SDS)": ["Combined", "Co-operative only", "Non-Cooperative only", "Not defined"],  # bits-8/7
+    "(SDS)_copy1": ["Combined", "Co-operative only", "Non-Cooperative only", "Not defined"],  # bits-8/7
+    "(EMS)": ["No emergency", "General emergency", "Lifeguard / medical", "Minimum fuel", "No communications", "Unlawful interference", "“Downed” Aircraft", "Undefined"],  # bits-6/4
+    "(EMS)_copy1": ["No emergency", "General emergency", "Lifeguard / medical", "Minimum fuel", "No communications", "Unlawful interference", "“Downed” Aircraft", "Undefined"],  # bits-6/4
+    "(EMS)_copy2": ["No emergency", "General emergency", "Lifeguard / medical", "Minimum fuel", "No communications", "Unlawful interference", "“Downed” Aircraft", "Undefined"],  # bits-6/4
     "(PFT)": ["No indication", "Potential False Track Indication"],  # bit-3
     "(FPLT)": ["Default value", "Track created / updated with FPL data"],  # bit-2
     "(FX) 4": ["End of data item", "Extension into next extent"],  # bit-1
@@ -174,25 +174,25 @@ I062_290_mapping= {
 
 
 I062_200_mapping = {
-    "Transversal Acceleration (TRANS)": [
+    "(TRANS)": [
         "Constant Course",   # 00
         "Right Turn",        # 01
         "Left Turn",         # 10
         "Undetermined"       # 11
     ],
-    "Longitudinal Acceleration (LONG)": [
+    "(LONG)": [
         "Constant Groundspeed",    # 00
         "Increasing Groundspeed",  # 01
         "Decreasing Groundspeed",  # 10
         "Undetermined"             # 11
     ],
-    "Vertical Rate (VERT)": [
+    "(VERT)": [
         "Level",      # 00
         "Climb",      # 01
         "Descent",    # 10
         "Undetermined"  # 11
     ],
-    "Altitude Discrepancy Flag (ADF)": [
+    "(ADF)": [
         "No altitude discrepancy",  # 0
         "Altitude discrepancy"      # 1
     ],
