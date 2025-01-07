@@ -23,9 +23,9 @@ if __name__ == '__main__':
             print("len: ", len(d))
             failed_data.append(d)
 
-    byte_decoder.save2json_static(results)
+    # byte_decoder.save2json_static(results)
+    # print("Saved!")
     
-    print("Saved!")
     print("######################")
     
     print("Failed data:")
