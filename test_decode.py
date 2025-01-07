@@ -10,5 +10,5 @@ bytes= [62, 0, 199, 129, 1, 2, 25, 25, 239, 204, 25, 25, 67, 67, 65, 49, 53, 49,
 
 BD= byte_decoder(data= bytes)
 # print(BD.process_byte_data())
-BD.process_byte_data()
-BD.save2json()
+print(BD.process_byte_data())
+# BD.save2json()

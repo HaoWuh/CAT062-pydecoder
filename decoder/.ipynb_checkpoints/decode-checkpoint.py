@@ -59,6 +59,9 @@ class byte_decoder:
 
             for fspec in fspec_field:
                 index_plus= 0
+                ###
+                print(self.index_position," ", len(self.byte_data), " ", fspec)
+                ###
                 assert self.index_position < len(self.byte_data), "Conflict: index_position >= len(byte_data)!"
                 if isinstance(fspec[1], int) or isinstance(fspec[1], float):
                     block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1]))

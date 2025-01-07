@@ -13,18 +13,26 @@ class Reader:
 class Raw_Reader(Reader):
     def __init__(self, filename, preprocess= True, analysis= False, detailed= False):
         super().__init__(filename, detailed)
-        self.data= self._raw2data()
-        if preprocess:
-            self.preprocessed_data= self.preprocess(self.data)
+        if filename is not None:
+            self.data= self._raw2data()
+            if preprocess:
+                self.preprocessed_data= self.preprocess(self.data)
+            if analysis:
+                self.asterix = self._raw2asterix()
+        else:
+            pass
+            
+    def import_data(self, data, analysis= False, detailed= False):
+        self.data= data
+        self.detailed= detailed
         if analysis:
-            self.asterix = self._raw2asterix()
+            self.asterix = self._data2asterix()
 
         
     def _raw2data(self):
         if not (self.filename.endswith("raw")):
             print("Not .raw file!")
             return None
-        
         with open(self.filename, "rb") as f:
             data = f.read()
             hex_list = [(int(byte)) for byte in data]
@@ -62,6 +70,28 @@ class Raw_Reader(Reader):
             formatted = asterix.describe(parsed)
             # print(formatted)
             return formatted
+        
+    def _data2asterix(self):
+        if self.detailed:
+            print('Items with description')
+            print('----------------------')
+
+        parsed = asterix.parse(self.data)
+        if self.detailed:
+            for packet in parsed:
+                for item in packet.items():
+                    print(item)
+            print('Items without description')
+            print('----------------------')
+        parsed = asterix.parse(self.data, verbose=False)
+        if self.detailed:
+            for packet in parsed:
+                for item in packet.items():
+                    print(item)
+            print('Textual description of data')
+            print('----------------------')
+        formatted = asterix.describe(parsed)
+        return formatted
         
     @staticmethod
     def preprocess(data):
