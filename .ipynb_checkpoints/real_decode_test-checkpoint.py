@@ -13,7 +13,7 @@ if __name__ == '__main__':
     failed_data= []
         
     results= []
-    for i, d in tqdm(enumerate(data_list)):
+    for i, d in enumerate(tqdm(data_list)):
         try:
             BD= byte_decoder(data= d)
             results.append(BD.process_byte_data())
