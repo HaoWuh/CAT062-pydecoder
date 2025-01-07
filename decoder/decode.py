@@ -59,9 +59,6 @@ class byte_decoder:
 
             for fspec in fspec_field:
                 index_plus= 0
-                ###
-                print(self.index_position," ", len(self.byte_data), " ", fspec)
-                ###
                 assert self.index_position < len(self.byte_data), "Conflict: index_position >= len(byte_data)!"
                 if isinstance(fspec[1], int) or isinstance(fspec[1], float):
                     block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1]))
@@ -88,10 +85,6 @@ class byte_decoder:
                 self.final_fspec_field[fspec[0]]= [f"0x{byte:02X} " for byte in self.byte_data[self.index_position: self.index_position+index_plus]]
                 self.index_position+= index_plus
                 
-                ###
-                print(self.final_fspec_field[fspec[0]])
-                print(block_result[fspec[0]])
-                ###
             
             if self.final_fspec_field:
                 for key in self.final_fspec_field.keys():
@@ -679,11 +672,17 @@ class byte_decoder:
 
         for ik, key in enumerate(out.keys()):
             if out[key] == "Presence":
-                ###
-                print(key, " ", [hex(x) for x in self.byte_data[index_end:index_end+I062_390_mapping[key]]])
-                ###
-                out[key]= apply_func(function_name+"_"+key[1:-1], self.byte_data[index_end:index_end+I062_390_mapping[key]])
-                index_end+= I062_390_mapping[key]
+                if isinstance(I062_390_mapping[key], int):
+                    out[key]= apply_func(function_name+"_"+key[1:-1], self.byte_data[index_end:index_end+I062_390_mapping[key]])
+                    index_end+= I062_390_mapping[key]
+                elif isinstance(I062_390_mapping[key], str) and 'rep' in I062_390_mapping[key]:
+                    rep_pos= I062_390_mapping[key].find('rep')
+                    b_num= int(I062_390_mapping[key][:rep_pos])+ (int(self.byte_data[index_end])-1)*int(I062_390_mapping[key][rep_pos+3:])
+                    
+                    out[key]= apply_func(function_name+"_"+key[1:-1], self.byte_data[index_end:index_end+b_num])
+                    index_end+= b_num
+                else:
+                    print("error! not str or no 'rep' inside!")
             else:
                 pass
 

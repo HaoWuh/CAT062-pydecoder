@@ -831,33 +831,51 @@ class decode_functions:
         binary_str= "".join([format(b, '08b') for b in b_data])
         
         rep_str= binary_str[0:8]
-        out["REP"]= hex(int(rep_str,2))
+        out["REP"]= str(int(rep_str,2))
+        
+        count_rep= 0
+        out["rep_content"]= []
+        pos= 8
+        
+        while count_rep < int(out["REP"]):
+            rep_dict= dict()
+            typ_list= ["Scheduled off-block time", "Estimated off-block time", "Estimated take-off time", "Actual off-block time", 
+     "Predicted time at runway hold", "Actual time at runway hold", "Actual line-up time", "Actual take-off time", 
+     "Estimated time of arrival", "Predicted landing time", "Actual landing time", "Actual time off runway", 
+     "Predicted time to gate", "Actual on-block time"]
+            rep_dict["TYP"]= typ_list[int(binary_str[pos:pos+5],2)]
+            pos+= 5
+            
+            day_list= ["Today", "Yesterday", "Tomorrow", "Invalid"]
+            rep_dict["DAY"]= day_list[int(binary_str[pos:pos+2],2)]
+            pos+= 2
 
-        typ_list= ["Scheduled off-block time", "Estimated off-block time", "Estimated take-off time", "Actual off-block time", 
- "Predicted time at runway hold", "Actual time at runway hold", "Actual line-up time", "Actual take-off time", 
- "Estimated time of arrival", "Predicted landing time", "Actual landing time", "Actual time off runway", 
- "Predicted time to gate", "Actual on-block time"]
-        out["TYP"]= typ_list[int(binary_str[8:13],2)]
+            assert binary_str[pos] == "0", "bit must be 0"
+            assert binary_str[pos+1:pos+4] == "000", "bit must be 000"
+            pos+= 4
 
-        day_list= ["Today", "Yesterday", "Tomorrow", "Invalid"]
-        out["DAY"]= day_list[int(binary_str[13:15],2)]
+            hor_str= binary_str[pos:pos+5]
+            rep_dict["HOR"]= str(int(hor_str,2))
+            pos+= 5
 
-        assert binary_str[15] == "0", "bit must be 0"
-        assert binary_str[16:19] == "000", "bit must be 000"
+            assert binary_str[pos:pos+2] == "00", "bit must be 00"
+            pos+= 2
 
-        hor_str= binary_str[19:24]
-        out["HOR"]= str(int(hor_str,2))
+            min_str= binary_str[pos:pos+6]
+            rep_dict["MIN"]= str(int(min_str,2))
+            pos+=6
 
-        assert binary_str[24:26] == "00", "bit must be 00"
+            rep_dict["AVS"]= binary_str[pos]
+            pos+=1
+            assert binary_str[pos] == "0", "bit must be 0"
+            pos+=1
 
-        min_str= binary_str[26:32]
-        out["MIN"]= str(int(min_str,2))
-
-        out["AVS"]= binary_str[32]
-        assert binary_str[33] == "0", "bit must be 0"
-
-        sec_str= binary_str[34:40]
-        out["SEC"]= str(int(sec_str,2))
+            sec_str= binary_str[pos:pos+6]
+            rep_dict["SEC"]= str(int(sec_str,2))
+            pos+= 6
+            
+            out["rep_content"].append(rep_dict)
+            count_rep+= 1
 
 
         return out
