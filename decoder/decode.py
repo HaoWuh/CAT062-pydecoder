@@ -292,7 +292,7 @@ class byte_decoder:
         out["G"]= decode_functions.des2val_des(out["G"], ["Default","Garbled"])
         out["Change in Mode 3/A"]= "No change" if first_byte[2] == 0 else "Mode 3/A has Changed"
         out["Change in Mode 3/A"]= decode_functions.des2val_des(out["Change in Mode 3/A"], ["No change","Mode 3/A has Changed"])
-        if int(first_byte[3]) == 0:
+        if not int(first_byte[3]) == 0:
             print("warning: I062_060: detect unexpected non-zero bit!")
             pass
         second_byte= bin(self.byte_data[index_start+1])[2:].zfill(8)

@@ -836,7 +836,7 @@ class decode_functions:
         out["HPR"]= hpr_list[int(binary_str[6:7],2)]
         out["HPR"]= decode_functions.des2val_des(out["HPR"], hpr_list)
 
-        if binary_str[7] == "0":
+        if not binary_str[7] == "0":
             print("warning: detect unexpected non-zero bit!")
 
         return out
