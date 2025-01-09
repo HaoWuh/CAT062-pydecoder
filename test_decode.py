@@ -79,7 +79,7 @@ def get_val(item):
         return item
 
 
-
-BD= byte_decoder(data= bytes)
-generate_check_json(BD.process_byte_data())
+if __name__ == "__main__":
+    BD= byte_decoder(data= bytes)
+    generate_check_json(BD.process_byte_data())
 ###
