@@ -2,7 +2,7 @@ import json
 from tqdm import tqdm
 from decoder.decode import byte_decoder
 from decoder.read import Raw_Reader
-from test_decode import generate_check_json
+from utils import generate_check_json
 
 if __name__ == '__main__':
 

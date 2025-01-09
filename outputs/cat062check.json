@@ -52,11 +52,15 @@
             }
         },
         "I062_245": {
-            "Target Identification": "CSH854  "
+            "Target Identification": {
+                "val": "CSH854  "
+            }
         },
         "I062_380": {
             "ADR": {
-                "Target address": "0x782125"
+                "Target address": {
+                    "val": "0x782125"
+                }
             }
         },
         "I062_040": {
@@ -135,7 +139,9 @@
                 }
             },
             "CSN": {
-                "Callsign": "CSH854 "
+                "Callsign": {
+                    "val": "CSH854 "
+                }
             },
             "IFI": {
                 "TYP": {
@@ -160,16 +166,24 @@
                 }
             },
             "TAC": {
-                "Type of aircraft": "B38M"
+                "Type of aircraft": {
+                    "val": "B38M"
+                }
             },
             "WTC": {
-                "Wake turbulence category": "M"
+                "Wake turbulence category": {
+                    "val": "M"
+                }
             },
             "DEP": {
-                "Departure airport": "VTBS"
+                "Departure airport": {
+                    "val": "VTBS"
+                }
             },
             "DST": {
-                "Destination airport": "ZSPD"
+                "Destination airport": {
+                    "val": "ZSPD"
+                }
             },
             "RDS": {
                 "NU1": {
@@ -178,7 +192,9 @@
                 "NU2": {
                     "val": 5
                 },
-                "LTR": "L"
+                "LTR": {
+                    "val": "L"
+                }
             },
             "TOD": {
                 "REP": {
