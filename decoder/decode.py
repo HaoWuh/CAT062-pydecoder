@@ -290,7 +290,7 @@ class byte_decoder:
         out["V"]= decode_functions.des2val_des(out["V"],["validated","not validated"])
         out["G"]= "Default" if int(first_byte[1]) == 0 else "Garbled"
         out["G"]= decode_functions.des2val_des(out["G"], ["Default","Garbled"])
-        out["Change in Mode 3/A"]= "No change" if first_byte[2] == 0 else "Mode 3/A has Changed"
+        out["Change in Mode 3/A"]= "No change" if int(first_byte[2]) == 0 else "Mode 3/A has Changed"
         out["Change in Mode 3/A"]= decode_functions.des2val_des(out["Change in Mode 3/A"], ["No change","Mode 3/A has Changed"])
         if not int(first_byte[3]) == 0:
             print("warning: I062_060: detect unexpected non-zero bit!")
@@ -320,14 +320,17 @@ class byte_decoder:
             _type_: dictionary, int
         """
         out=dict()
-
-        binary_str = "".join(format(byte, '08b') for byte in self.byte_data[index_start+1:index_end])
+        
+        binary_str = "".join(format(byte, '08b') for byte in self.byte_data[index_start:index_end])
+        
+        sti_str= binary_str[:2]
+        out["STI"]= int(sti_str, 2)
 
         flno2_binary_str = ""
         result = ""
 
 
-        for i, char in enumerate(binary_str):
+        for i, char in enumerate(binary_str[8:]):
             flno2_binary_str += char
             if (i + 1) % 6 == 0:
                 flight_number_value = decode_functions.flight_number_decode(int(flno2_binary_str,2))
@@ -737,7 +740,7 @@ class byte_decoder:
         function_name = inspect.currentframe().f_code.co_name
 
         while (8*(structure_level+1)) <= len(binary_str):
-            out[I062_270_list[structure_level]]= apply_func(function_name+"_"+I062_270_list[structure_level], self.byte_data[8*structure_level:8*(structure_level+1)])
+            out[I062_270_list[structure_level]]= apply_func(function_name+"_"+I062_270_list[structure_level], self.byte_data[index_start+1*structure_level:index_start+1*(structure_level+1)])
             structure_level+= 1
     
         pop_key_list=[]

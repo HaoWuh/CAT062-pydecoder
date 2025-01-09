@@ -2,7 +2,7 @@ from decoder.decode import byte_decoder
 from decoder.decode_func import decode_functions
 
 
-def generate_check_json(result):
+def generate_check_json(result, s_name= "check"):
     if isinstance(result, dict):
         check_list= make_check_list(result)
                 
@@ -14,7 +14,7 @@ def generate_check_json(result):
     else:
         return
             
-    byte_decoder.save2json_static(check_list, save_name= "check")
+    byte_decoder.save2json_static(check_list, save_name= s_name)
     print("check saved!")
     
     
@@ -76,10 +76,18 @@ def extract_val2list(result):
                     
     elif isinstance(result, dict):
         ks= [k for k in result.keys()]
+        
         if "val" in ks:   
+            if "desc" in ks:
+                if "Spare" in result["desc"] or "spare" in result["desc"]:
+                    return []
+            else:
+                pass
             return [result["val"]]
         else:
             for k in ks:
+                if "FX" in k or "REP" in k:
+                    continue
                 r_list= extract_val2list(result[k])
                 for r in r_list:
                     final_list.append(r)

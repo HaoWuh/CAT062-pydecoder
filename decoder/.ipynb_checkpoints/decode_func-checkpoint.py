@@ -25,12 +25,21 @@ class decode_functions:
 
     @staticmethod
     def invert_binary_if_negative(binary_str):
-        if binary_str[0] == '1':  
-            inverted_binary = ''.join('1' if b == '0' else '0' for b in binary_str)
-            return "-"+inverted_binary
+        # if binary_str[0] == '1':  
+        #     inverted_binary = ''.join('1' if b == '0' else '0' for b in binary_str)
+        #     return "-"+inverted_binary
+        # else:
+        #     return binary_str  
+
+        n = len(binary_str)
+
+        if binary_str[0] == '1':
+            inverted = ''.join('1' if c == '0' else '0' for c in binary_str)
+            complement = bin(int(inverted, 2) + 1)[2:].zfill(n)
+            return "-"+complement
         else:
-            return binary_str  
-    
+            return binary_str
+
 
 
     @staticmethod
@@ -640,7 +649,7 @@ class decode_functions:
     def I062_290_TRK(b_data):
         out= dict()
         binary_str= "".join([format(b, '08b') for b in b_data])
-        trk_str= decode_functions.invert_binary_if_negative(binary_str)
+        trk_str= binary_str
 
         out["TRK"]= str(int(trk_str,2)*(0.25))+" "+"s"
         return out
@@ -1073,7 +1082,7 @@ class decode_functions:
 
         binary_str= "".join([format(b, '08b') for b in b_data])
         length_str= binary_str[0:7]
-        out["Length"]= str(int(length_str,2)*(1))+ " "+"m"
+        out["Length"]= str(int(length_str,2)*(1.0))+ " "+"m"
         return out
     
 
@@ -1097,7 +1106,7 @@ class decode_functions:
 
         binary_str= "".join([format(b, '08b') for b in b_data])
         width_str= binary_str[0:7]
-        out["Width"]= str(int(width_str,2)*(1))+ " "+"m"
+        out["Width"]= str(int(width_str,2)*(1.0))+ " "+"m"
         return out
 
 
