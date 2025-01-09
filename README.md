@@ -15,6 +15,3 @@ To test the functionality, you can use the provided script:
 python test_decode.py
 ```
 
-## Contributions
-Contributions are welcome! If you find a bug or have a feature request, feel free to open an issue or submit a pull request.
-
