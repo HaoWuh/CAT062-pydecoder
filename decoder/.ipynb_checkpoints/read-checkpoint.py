@@ -15,8 +15,10 @@ class Raw_Reader(Reader):
         else:
             pass
             
-    def import_data(self):
+    def import_data(self, data, preprocess= True):
         self.data= data
+        if preprocess:
+            self.preprocessed_data= self.preprocess(self.data)
 
         
     def _raw2data(self):
