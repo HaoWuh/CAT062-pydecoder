@@ -1,5 +1,6 @@
 tensorone-storage-log/
 /.idea
+/data/*.raw
 .vscode
 .ipynb_checkpoints
 **/__pycache__/
