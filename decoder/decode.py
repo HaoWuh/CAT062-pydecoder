@@ -1051,6 +1051,9 @@ class byte_decoder:
 
     def save2json(self, output_path= rf"outputs"):
         try:
+            # Ensure the directory exists
+            os.makedirs(output_path, exist_ok=True)
+
             with open(output_path+"/"+"cat062"+self.save_name+".json", "w", encoding="utf-8") as json_file:
                 json.dump(self.result, json_file, ensure_ascii=False, indent=4)
         except ValueError as e:
@@ -1059,6 +1062,9 @@ class byte_decoder:
     @staticmethod
     def save2json_static(result, output_path= rf"outputs", save_name= ""):
         try:
+            # Ensure the directory exists
+            os.makedirs(output_path, exist_ok=True)
+            
             with open(output_path+"/"+"cat062"+save_name+".json", "w", encoding="utf-8") as json_file:
                 json.dump(result, json_file, ensure_ascii=False, indent=4)
         except ValueError as e:
