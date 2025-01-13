@@ -774,7 +774,7 @@ class byte_decoder:
         vfi_list= ["Unknown", "ATC equipment maintenance", "Airport maintenance", "Fire", "Bird scarer", "Snow plough", "Runway sweeper", 
  "Emergency", "Police", "Bus", "Tug (push/tow)", "Grass cutter", "Fuel", "Baggage", "Catering", "Aircraft maintenance", "Flyco (follow me)"]
         out["VFI"]= vfi_list[int("".join(format(byte, '08b') for byte in self.byte_data[index_start:index_end]),2)]
-        out["VFI"]= decode_functions.des2val_des(out["VFI"], vif_list)
+        out["VFI"]= decode_functions.des2val_des(out["VFI"], vfi_list)
 
         return out, index_end-index_start
     
