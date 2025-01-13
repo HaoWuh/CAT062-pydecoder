@@ -17,12 +17,8 @@ def test_extract_val2list(object_file):
     assert extract_val2list is not None
     extracted_data= extract_val2list(data)
     assert extracted_data is not None
+    # use pytest -s to check
     print(extracted_data)
 
-
-if __name__ == "__main__":
-    test_extract_val2list()
-    
-    pass
     
     
