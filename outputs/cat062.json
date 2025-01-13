@@ -1,0 +1,160 @@
+{
+    "head message": {
+        "cat version:": {
+            "val": 62
+        },
+        "message_length": {
+            "val": 49
+        }
+    },
+    "block_1": {
+        "I062_010:|0x01 0x01 |": {
+            "SAC": {
+                "val": 1
+            },
+            "SIC": {
+                "val": 1
+            }
+        },
+        "I062_070:|0x36 0x12 0x15 |": {
+            "Time Stemp": {
+                "val": 27684.0
+            }
+        },
+        "I062_105:|0x00 0x58 0x92 0x33 0x01 0x5A 0x79 0x4A |": {
+            "WGS-84 Latitude": {
+                "val": 31.13827407360077
+            },
+            "WGS-84 Longitude": {
+                "val": 121.80719017982483
+            }
+        },
+        "I062_100:|0x00 0x0A 0xE4 0xFF 0xFA 0xCE |": {
+            "X": {
+                "val": 1394.0
+            },
+            "Y": {
+                "val": -665.0
+            }
+        },
+        "I062_185:|0x00 0x00 0x00 0x00 |": {
+            "Vx": {
+                "val": 0.0
+            },
+            "Vy": {
+                "val": 0.0
+            }
+        },
+        "I062_060:|0x0A 0x03 |": {
+            "V": {
+                "val": 0
+            },
+            "G": {
+                "val": 0
+            },
+            "Change in Mode 3/A": {
+                "val": 0
+            },
+            "octal Mode 3/A": {
+                "val": 5003
+            }
+        },
+        "I062_245:|0x40 0x0C 0x54 0xF9 0xDF 0x6C 0x20 |": {
+            "STI": {
+                "val": 1
+            },
+            "Target Identification": {
+                "val": "CES9760 "
+            }
+        },
+        "I062_380:|0x80 0x78 0x0E 0x7E |": {
+            "ADR": {
+                "Target address": {
+                    "val": "0x780e7e"
+                }
+            }
+        },
+        "I062_040:|0x00 0x16 |": {
+            "Track number": {
+                "val": 22
+            }
+        },
+        "I062_080:|0x01 0x01 0x80 |": {
+            "MON": {
+                "val": 0
+            },
+            "SPI": {
+                "val": 0
+            },
+            "MRH": {
+                "val": 0
+            },
+            "SRC": {
+                "val": 0
+            },
+            "CNF": {
+                "val": 0
+            },
+            "SIM": {
+                "val": 0
+            },
+            "TSE": {
+                "val": 0
+            },
+            "TSB": {
+                "val": 0
+            },
+            "FPC": {
+                "val": 0
+            },
+            "AFF": {
+                "val": 0
+            },
+            "STP": {
+                "val": 0
+            },
+            "KOS": {
+                "val": 0
+            },
+            "AMA": {
+                "val": 1
+            },
+            "MD4": {
+                "val": 0
+            },
+            "ME": {
+                "val": 0
+            },
+            "MI": {
+                "val": 0
+            },
+            "MD5": {
+                "val": 0
+            }
+        },
+        "I062_135:|0x80 0x00 |": {
+            "QNH": {
+                "val": 1
+            },
+            "Barometric altitude": {
+                "val": 0.0
+            }
+        },
+        "I062_340:|0x04 0x40 |": {
+            "TYP": {
+                "TYP": {
+                    "val": 2
+                },
+                "SIM": {
+                    "val": 0
+                },
+                "RAB": {
+                    "val": 0
+                },
+                "TST": {
+                    "val": 0
+                }
+            }
+        }
+    }
+}

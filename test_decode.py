@@ -27,6 +27,6 @@ if __name__ == "__main__":
 
     # generate a ckeck.json!
     BD= byte_decoder(data= bytes)
-    generate_check_json(BD.process_byte_data(), s_name= "singlecheck")
+    generate_check_json(BD.process_byte_data(), s_name= "check")
     BD.save2json()
 ###

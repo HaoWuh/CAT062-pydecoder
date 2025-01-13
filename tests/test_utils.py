@@ -1,4 +1,5 @@
 import json
+import pytest
 from decoder.utils import *
 
 
@@ -10,7 +11,9 @@ def test_extract_val2list():
     except json.JSONDecodeError as e:
         print(f"JSON error: {e}")
     
+    assert extract_val2list is not None
     extracted_data= extract_val2list(data)
+    assert extracted_data is not None
     print(extracted_data)
 
 
