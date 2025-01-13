@@ -16,29 +16,8 @@ def generate_check_json(result, s_name= "check"):
             
     byte_decoder.save2json_static(check_list, save_name= s_name)
     print("check saved!")
-    
-    
-
-def make_check_list(result):
-    check_list= []
-    result= decode_functions.clean_str2val(result)
-    result= get_val(result)
-    for key in result.keys():
-        if 'block' in key:
-            block_dict= dict()
-            for key1 in result[key].keys():
-                if 'I062' in key1:
-                    block_dict[key1[:8]]= dict()
-                    for key2, item in result[key][key1].items():
-                        # block_dict[key1[:8]][key2]= get_val(item)
-                        block_dict[key1[:8]][key2]= item
 
 
-            check_list.append(block_dict)
-                
-    return check_list
-   
-            
 def get_val(item):
     if isinstance(item, list):
         for it in item:
@@ -63,7 +42,28 @@ def get_val(item):
     elif isinstance(item, str):
         return {"val": item}
     else:
-        return item
+        return item 
+    
+
+def make_check_list(result):
+    check_list= []
+    result= decode_functions.clean_str2val(result)
+    result= get_val(result)
+    for key in result.keys():
+        if 'block' in key:
+            block_dict= dict()
+            for key1 in result[key].keys():
+                if 'I062' in key1:
+                    block_dict[key1[:8]]= dict()
+                    for key2, item in result[key][key1].items():
+                        # block_dict[key1[:8]][key2]= get_val(item)
+                        block_dict[key1[:8]][key2]= item
+
+
+            check_list.append(block_dict)
+                
+    return check_list
+   
     
     
 def extract_val2list(result):
