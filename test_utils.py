@@ -8,7 +8,7 @@ def test_extract_val2list():
         with open(file, 'r') as file:
             data = json.load(file)
     except json.JSONDecodeError as e:
-        print(f"JSON 解析错误: {e}")
+        print(f"JSON error: {e}")
     
     extracted_data= extract_val2list(data)
     print(extracted_data)
