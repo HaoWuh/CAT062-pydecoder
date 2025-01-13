@@ -229,7 +229,7 @@ class decode_functions:
             pos+= 1
             rep_dict["NC"]= binary_str[pos]
             pos+= 1
-            rop_dict["TCP"]= hex(int(binary_str[pos:pos+6],2))
+            rep_dict["TCP"]= hex(int(binary_str[pos:pos+6],2))
             pos+= 6
 
             alttitude_str= decode_functions.invert_binary_if_negative(binary_str[pos:pos+16])
