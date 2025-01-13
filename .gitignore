@@ -3,4 +3,5 @@ tensorone-storage-log/
 /data/*.raw
 .vscode
 .ipynb_checkpoints
+git_push.sh
 **/__pycache__/
