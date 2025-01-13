@@ -3,9 +3,6 @@ import pytest
 from decoder.utils import *
 
 
-
-
-
 @pytest.fixture(scope="module")
 def original_file():
     return "./outputs/cat062.json"
