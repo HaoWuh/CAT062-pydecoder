@@ -2,9 +2,12 @@ import json
 import pytest
 from decoder.utils import *
 
+@pytest.fixture(scope="module")
+def object_file():
+    return "./outputs/cat062check.json"
 
-def test_extract_val2list():
-    file= "./outputs/cat062check.json"
+def test_extract_val2list(object_file):
+    file= object_file
     try:
         with open(file, 'r') as file:
             data = json.load(file)

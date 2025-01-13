@@ -12,6 +12,6 @@ CAT062-pydecoder is a Python-based tool designed to decode the existing aviation
 ## Test Usage
 To test the functionality, you can use the provided script:
 ```bash
-python test_decode.py
+python demo_decode.py
 ```
 
