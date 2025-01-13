@@ -1,0 +1,4 @@
+tensorone-storage-log/
+/.idea
+.vscode
+**/__pycache__/
