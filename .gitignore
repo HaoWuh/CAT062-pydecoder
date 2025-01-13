@@ -1,7 +1,6 @@
-tensorone-storage-log/
+git_push.sh
 /.idea
 /data/*.raw
-.vscode
-.ipynb_checkpoints
-git_push.sh
+**/.vscode/
+**/.ipynb_checkpoints/
 **/__pycache__/
