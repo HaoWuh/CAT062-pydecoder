@@ -6,7 +6,7 @@ from decoder.utils import generate_check_json
 
 if __name__ == '__main__':
 
-    path= rf"data/binary.raw"
+    path= rf"data/binary_log.raw"
     RR= Raw_Reader(path)
     data_list= RR.preprocessed_data
     
@@ -25,7 +25,7 @@ if __name__ == '__main__':
             failed_data.append(d)
 
     byte_decoder.save2json_static(results)
-    # generate_check_json(results)
+    generate_check_json(results)
     print("Saved!")
     
     print("######################")

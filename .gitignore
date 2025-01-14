@@ -1,6 +1,7 @@
 git_push.sh
 /.idea
 /data/*.raw
+/data/*.log
 **/.vscode/
 **/.ipynb_checkpoints/
 **/.pytest_cache/
