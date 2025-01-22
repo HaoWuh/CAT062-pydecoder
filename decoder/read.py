@@ -1,22 +1,42 @@
 class Reader:
     def __init__(self, filename):
+        """initialize the reader
+
+        Args:
+            filename (_type_): name of the file
+        """
         self.filename = filename
-        self.data = None
-        self.preprocessed_data= None
+        self.data = None   # data
+        self.preprocessed_data= None    # preprocessed_data
 
 
 class Raw_Reader(Reader):
     def __init__(self, filename, preprocess= True):
+        """initialize the reader
+
+        Args:
+            filename (_type_): name of the file
+            preprocess (bool, optional): Defaults to True.
+        """
         super().__init__(filename)
         if filename is not None:
             self.data= self._raw2data()
             if preprocess:
                 self.preprocessed_data= self.preprocess(self.data)
         else:
+            # for asterix processing part
+            # It is not needed at present
             pass
             
     def import_data(self, data, preprocess= True):
+        """import data into the reader
+
+        Args:
+            data (_type_): list
+            preprocess (bool, optional):  Defaults to True.
+        """
         self.data= data
+    
         if preprocess:
             self.preprocessed_data= self.preprocess(self.data)
 
@@ -30,6 +50,7 @@ class Raw_Reader(Reader):
             hex_list = [(int(byte)) for byte in data]
             return hex_list
     
+#     need import asterix package to using the following functions
 
 #     def _raw2asterix(self):
 #         if not (self.filename.endswith("raw")):
@@ -88,6 +109,16 @@ class Raw_Reader(Reader):
         
     @staticmethod
     def preprocess(data):
+        """preprocess data
+
+        Args:
+            data (_type_): data to be preprocessed
+
+        Returns:
+            _type_: preprocessed data
+        """
+
+        assert isinstance(data, list), "Data must be a list"
         
         data_list= []
 
