@@ -9,6 +9,12 @@ from decoder.decode_func import *
 class byte_decoder:
 
     def __init__(self, data= None, save_name= ""):
+        """_Initialize byte_decoder
+
+        Args:
+            data (_type_, optional): input_byte_data. Defaults to None.
+            save_name (str, optional): file_name for saving. Defaults to "".
+        """
         if isinstance(data, str):
             pass
         elif isinstance(data, bytes):
@@ -25,6 +31,12 @@ class byte_decoder:
 
 
     def process_byte_data(self):
+        """Main structure of decode class
+           generating result dictionary based on self.data
+
+        Returns:
+            _type_: dictionary
+        """
         # Detect if the head byte is 62
         if self.byte_data[0] != 62:
             raise ValueError("Error! detect non-62 head byte!")
@@ -43,6 +55,7 @@ class byte_decoder:
         self.result["head message"]= head_message_dict
         
         block_number= 1
+        # block number unknown
         while self.index_position < message_length:        
             # Read FSPEC field
             fspec_field= []
@@ -64,6 +77,9 @@ class byte_decoder:
                     block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1][0]))
                 else:
                     pass
+
+                # for test (skip error fspec)
+
                 # try:
                 #     if isinstance(fspec[1], int) or isinstance(fspec[1], float):
                 #         block_result[fspec[0]], index_plus= getattr(self, fspec[0])(self.index_position, self.index_position+int(fspec[1]))
@@ -83,7 +99,7 @@ class byte_decoder:
                 self.final_fspec_field[fspec[0]]= [f"0x{byte:02X} " for byte in self.byte_data[self.index_position: self.index_position+index_plus]]
                 self.index_position+= index_plus
                 
-            
+            # generate the final version of fspec field
             if self.final_fspec_field:
                 for key in self.final_fspec_field.keys():
                     try:
@@ -99,6 +115,14 @@ class byte_decoder:
         return self.result
     
     def fspec_decode(self, position= 3):
+        """decode fspec field
+
+        Args:
+            position (int, optional): default fspec position. Defaults to 3.
+
+        Returns:
+            _type_: list, int
+        """
         # Initialize an empty list to store the field
         field= []
         # Initialize a counter to keep track of the number of bits processed
