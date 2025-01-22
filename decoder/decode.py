@@ -43,9 +43,7 @@ class byte_decoder:
         self.result["head message"]= head_message_dict
         
         block_number= 1
-        while self.index_position < message_length:
-            # print("block: ",block_number," byte position(from 0): ", self.index_position)
-        
+        while self.index_position < message_length:        
             # Read FSPEC field
             fspec_field= []
             fspec_field, self.index_position= self.fspec_decode(self.index_position)        
@@ -101,28 +99,43 @@ class byte_decoder:
         return self.result
     
     def fspec_decode(self, position= 3):
+        # Initialize an empty list to store the field
         field= []
+        # Initialize a counter to keep track of the number of bits processed
         count= 0
+        # Initialize a boolean variable to indicate if the end of the field has been reached
         X= False
+        # Loop through the byte data until the end of the field is reached
         while position < len(self.byte_data) and not X:
+            # Get the current byte
             temp_byte= self.byte_data[position]
-            # print(format(temp_byte, '08b'))
+            # Loop through each bit in the byte
             for i, bit in enumerate(format(temp_byte, '08b')):
+                # If the bit is the last bit in the byte
                 if i == 7:
+                    # Increment the position and count
                     position+= 1
                     count+= 1
+                    # If the bit is 1, do nothing
                     if bit == "1":
                         pass
+                    # If the bit is 0, set X to True to indicate the end of the field
                     else:
                         X= True
+                    # Break out of the loop
                     break
                         
+                # If the bit is 1
                 if bit == "1":
+                    # If the corresponding bit in the fspec_mapping is True
                     if fspec_mapping[7*count+i+1][0]:
+                        # Append the corresponding field to the list
                         field.append(fspec_mapping[7*count+i+1])
                         # print(fspec_mapping[7*count+i+1])
 
+        # Return the list of fields and the current position
         return field, position
+
     
 
 
